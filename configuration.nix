@@ -14,6 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -41,6 +43,8 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
 
@@ -80,6 +84,7 @@
       firefox
       tree
       discord
+      lutris
     ];
   };
 
@@ -103,6 +108,18 @@
     '';
   };
 
+  # opengl stuff for lutris / battlenet
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      amdvlk
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
+  };
+  hardware.pulseaudio.support32Bit = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
