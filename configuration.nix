@@ -96,10 +96,16 @@
   environment.systemPackages = with pkgs; [
     vim
     neovim
+    glow
     wget
     curl
+    unzip
+    zip
+    lm_sensors
     git
     alacritty
+    gcc
+    clang
   ];
 
   services = {
