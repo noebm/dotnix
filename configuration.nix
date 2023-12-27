@@ -99,8 +99,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    neovim
     glow
     wget
     curl
@@ -112,6 +110,13 @@
     gcc
     clang
   ];
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   services = {
     udev.extraRules = ''
