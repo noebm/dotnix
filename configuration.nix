@@ -85,6 +85,9 @@
       tree
       discord
       lutris
+      steam
+      wineWowPackages.stable
+      wineWowPackages.waylandFull
     ];
   };
 
