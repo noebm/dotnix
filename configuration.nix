@@ -70,7 +70,12 @@
   services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.xserver.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+    };
+  };
 
   fonts.packages = with pkgs; [
     nerdfonts
