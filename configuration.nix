@@ -92,7 +92,9 @@
       lutris
       steam
       wineWowPackages.stable
-      wineWowPackages.waylandFull
+      # wineWowPackages.waylandFull
+      yt-dlp
+      mpv
     ];
   };
 
