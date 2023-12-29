@@ -43,10 +43,15 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
+
+  # required for wayland
+  security.polkit.enable = true;
 
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
