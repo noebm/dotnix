@@ -100,6 +100,13 @@
       # wineWowPackages.waylandFull
       yt-dlp
       mpv
+
+      # language support for nvim
+      python3
+      cargo rustc
+      luarocks # for nvim itself
+      nodejs
+      wl-clipboard
     ];
   };
 
