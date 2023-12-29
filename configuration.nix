@@ -111,6 +111,7 @@
     alacritty
     gcc
     clang
+    glib.bin
   ];
 
   programs.neovim = {
