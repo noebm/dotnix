@@ -105,6 +105,9 @@
       yt-dlp
       mpv
 
+      qbittorrent
+      tor-browser-bundle-bin
+
       # language support for nvim
       python3
       cargo rustc
