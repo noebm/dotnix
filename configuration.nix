@@ -33,6 +33,22 @@ in {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # KDE Connect
+    ];
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
@@ -150,6 +166,7 @@ in {
     clang
     glib.bin
     wl-clipboard
+    libsForQt5.kdeconnect-kde
   ];
 
   programs.neovim = {
