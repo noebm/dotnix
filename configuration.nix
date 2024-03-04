@@ -129,6 +129,7 @@ in {
   users.users.work = {
     isNormalUser = true;
     packages = with pkgs; [
+      firefox
       python3
     ];
   };
