@@ -123,7 +123,13 @@ in {
       rustc
       luarocks # for nvim itself
       nodejs
-      wl-clipboard
+    ];
+  };
+
+  users.users.work = {
+    isNormalUser = true;
+    packages = with pkgs; [
+      python3
     ];
   };
 
@@ -142,6 +148,7 @@ in {
     gcc
     clang
     glib.bin
+    wl-clipboard
   ];
 
   programs.neovim = {
