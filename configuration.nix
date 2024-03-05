@@ -17,6 +17,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    <home-manager/nixos>
   ];
 
   # enable `nix flake ...` commands
@@ -140,6 +141,12 @@ in {
       luarocks # for nvim itself
       nodejs
     ];
+  };
+
+  # home-manager.users.noebm = import ./noebm.nix { inherit pkgs; };
+  home-manager.users.noebm = {
+    imports = [ /home/noebm/dotfiles/home-manager/noebm.nix ];
+    home.stateVersion = "23.11";
   };
 
   users.users.work = {
