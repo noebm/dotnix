@@ -143,9 +143,8 @@ in {
     ];
   };
 
-  # home-manager.users.noebm = import ./noebm.nix { inherit pkgs; };
   home-manager.users.noebm = {
-    imports = [ /home/noebm/dotfiles/home-manager/noebm.nix ];
+    imports = [ ./nvim.nix ];
     home.stateVersion = "23.11";
   };
 
@@ -155,6 +154,11 @@ in {
       firefox
       python3
     ];
+  };
+
+  home-manager.users.work = {
+    imports = [ ./nvim.nix ];
+    home.stateVersion = "23.11";
   };
 
   # List packages installed in system profile. To search, run:
