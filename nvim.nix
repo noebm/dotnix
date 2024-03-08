@@ -121,5 +121,9 @@ in {
     plugins.which-key = {
       enable = true;
     };
+
+    plugins.lualine = {
+      enable = true;
+    };
   };
 }
