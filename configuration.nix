@@ -144,7 +144,7 @@ in {
   };
 
   home-manager.users.noebm = {
-    imports = [ ./nvim.nix ];
+    imports = [./nvim.nix];
     home.stateVersion = "23.11";
   };
 
@@ -157,7 +157,7 @@ in {
   };
 
   home-manager.users.work = {
-    imports = [ ./nvim.nix ];
+    imports = [./nvim.nix];
     home.stateVersion = "23.11";
   };
 
