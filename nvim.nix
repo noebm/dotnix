@@ -86,7 +86,18 @@ in {
       ];
       enable = true;
     };
-    plugins.trouble.enable = true;
+    plugins.treesitter-context.enable = true;
+
+    plugins.treesitter-refactor = {
+      enable = true;
+      highlightCurrentScope.enable = true;
+      highlightDefinitions.enable = true;
+    };
+
+    plugins.trouble = {
+      enable = true;
+      autoOpen = true;
+    };
     plugins.noice.enable = true;
     plugins.nix.enable = true;
 
