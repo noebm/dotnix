@@ -48,7 +48,9 @@ in {
 
     plugins.lsp = {
       enable = true;
-      servers.nixd.enable = true;
+      # causes 2.16.2 nix dependency
+      # which has a CVE
+      # servers.nixd.enable = true;
       servers.pyright.enable = true;
 
       keymaps = {
