@@ -128,8 +128,10 @@ in {
       enable = true;
     };
 
-    plugins.rust-tools = {
-      enable = true;
+    # rust plugins
+    plugins = {
+      rust-tools.enable = true;
+      crates-nvim.enable = true;
     };
 
     plugins.which-key = {
