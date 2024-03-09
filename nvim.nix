@@ -92,7 +92,7 @@ in {
 
     plugins.treesitter-refactor = {
       enable = true;
-      highlightCurrentScope.enable = true;
+      # highlightCurrentScope.enable = true;
       highlightDefinitions.enable = true;
     };
 
