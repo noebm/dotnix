@@ -99,6 +99,7 @@ in {
     plugins.trouble = {
       enable = true;
       autoOpen = true;
+      autoClose = true;
     };
     plugins.noice.enable = true;
     plugins.nix.enable = true;
