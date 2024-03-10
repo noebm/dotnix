@@ -132,9 +132,13 @@ in {
       autoOpen = true;
       autoClose = true;
     };
-    plugins.noice.enable = true;
-    plugins.nix.enable = true;
 
+    # noice seems to cause delay [nixos-23.11]
+    # plugins.noice.enable = true;
+
+    plugins.nvim-autopairs.enable = true;
+
+    plugins.nix.enable = true;
     plugins.fugitive.enable = true;
     plugins.gitsigns = {
       enable = true;
