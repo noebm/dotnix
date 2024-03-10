@@ -37,6 +37,9 @@ in {
 
     plugins.none-ls = {
       enable = true;
+      # process delay in ms?
+      debounce = 100;
+
       enableLspFormat = true;
       sources.formatting.black.enable = true;
       sources.formatting.isort = {
@@ -102,9 +105,7 @@ in {
       };
     };
 
-    plugins.lsp-format = {
-      enable = true;
-    };
+    plugins.lsp-format.enable = true;
 
     plugins.rainbow-delimiters.enable = true;
 
