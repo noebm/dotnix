@@ -55,19 +55,49 @@ in {
 
       keymaps = {
         diagnostic = {
-          "[d" = "goto_next";
-          "]d" = "goto_prev";
-          "gl" = "open_float";
+          "[d" = {
+            action = "goto_next";
+            desc = "Goto next diagnostic";
+          };
+          "]d" = {
+            action = "goto_prev";
+            desc = "Goto previous diagnostic";
+          };
+          "gl" = {
+            action = "open_float";
+            desc = "Open float";
+          };
         };
 
         lspBuf = {
-          K = "hover";
-          gr = "references";
-          gd = "definition";
-          gi = "implementation";
-          gt = "type_definition";
-          gs = "signature_help";
-          "<F2>" = "rename";
+          K = {
+            action = "hover";
+            desc = "Hover";
+          };
+          gr = {
+            action = "references";
+            desc = "Goto references";
+          };
+          gd = {
+            action = "definition";
+            desc = "Goto definition";
+          };
+          gi = {
+            action = "implementation";
+            desc = "Goto implementation";
+          };
+          gt = {
+            action = "type_definition";
+            desc = "Type definition";
+          };
+          gs = {
+            action = "signature_help";
+            desc = "Signature help";
+          };
+          "<F2>" = {
+            action = "rename";
+            desc = "Rename variable";
+          };
         };
       };
     };
