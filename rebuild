@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+NIXOS_CONFIG=/home/noebm/dotfiles/nixos
+
+pushd $NIXOS_CONFIG
+
+sudo nixos-rebuild switch --flake .
+
+popd
+
+
