@@ -18,10 +18,19 @@
     home-manager,
     nixvim,
     ...
-  } @ inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  } @ inputs: let
+    systemConfig = {
+      hostname = "nixos";
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+    };
+    userConfig = {
+      user = "noebm";
+      email = "moritz.noebauer@gmail.com";
+    };
+  in {
+    nixosConfigurations.${systemConfig.hostname} = nixpkgs.lib.nixosSystem {
+      system = systemConfig.system;
+      specialArgs = {inherit inputs systemConfig userConfig;};
       modules = [
         ./configuration.nix
       ];
