@@ -11,7 +11,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
+    inputs.nixvim.nixosModules.nixvim
+    ./nvim.nix
   ];
 
   # enable `nix flake ...` commands
@@ -137,28 +138,12 @@
     ];
   };
 
-  home-manager.users.noebm = {
-    imports = [
-      inputs.nixvim.homeManagerModules.nixvim
-      ./nvim.nix
-    ];
-    home.stateVersion = "23.11";
-  };
-
   users.users.work = {
     isNormalUser = true;
     packages = with pkgs; [
       firefox
       python3
     ];
-  };
-
-  home-manager.users.work = {
-    imports = [
-      inputs.nixvim.homeManagerModules.nixvim
-      ./nvim.nix
-    ];
-    home.stateVersion = "23.11";
   };
 
   # List packages installed in system profile. To search, run:
@@ -179,13 +164,6 @@
     wl-clipboard
     libsForQt5.kdeconnect-kde
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   services = {
     udev.extraRules = ''
