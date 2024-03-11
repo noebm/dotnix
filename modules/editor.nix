@@ -5,7 +5,7 @@
 }: {
   imports = [
     inputs.nixvim.nixosModules.nixvim
-    ../nvim.nix
+    ../config/nvim.nix
   ];
   programs.nixvim.defaultEditor = true;
   environment.systemPackages = with pkgs; [
