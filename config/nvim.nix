@@ -33,14 +33,58 @@
       list = true;
     };
 
-    plugins.nvim-cmp.enable = true;
-    plugins.cmp-nvim-lsp.enable = true;
-    plugins.cmp-nvim-lsp-document-symbol.enable = true;
-    plugins.cmp-nvim-lsp-signature-help.enable = true;
-    plugins.cmp-buffer.enable = true;
-    plugins.cmp-cmdline.enable = true;
-    plugins.cmp-path.enable = true;
-    plugins.cmp-treesitter.enable = true;
+    plugins = {
+      cmp-snippy.enable = true;
+      cmp-nvim-lsp.enable = true;
+      cmp-nvim-lsp-document-symbol.enable = true;
+      cmp-nvim-lsp-signature-help.enable = true;
+      cmp-buffer.enable = true;
+      cmp-cmdline.enable = true;
+      cmp-path.enable = true;
+      cmp-treesitter.enable = true;
+      nvim-cmp = {
+        enable = true;
+
+        snippet.expand = "snippy";
+
+        sources = [
+          {name = "snippy";}
+          {name = "nvim_lsp";}
+          {name = "nvim_lsp_document_symbol";}
+          {name = "nvim_lsp_signature_help";}
+          {name = "buffer";}
+          {name = "cmdline";}
+          {name = "path";}
+          {name = "treesitter";}
+        ];
+
+        # preliminary
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = {
+            action = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expandable() then
+                  luasnip.expand()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif check_backspace() then
+                  fallback()
+                else
+                  fallback()
+                end
+              end
+            '';
+            modes = [
+              "i"
+              "s"
+            ];
+          };
+        };
+      };
+    };
     # plugins.cmp-conventionalcommits.enable = true;
 
     plugins.none-ls = {
