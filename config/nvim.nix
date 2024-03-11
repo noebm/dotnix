@@ -17,11 +17,12 @@
       maplocalleader = ",";
     };
 
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
+
     options = {
-      clipboard = {
-        register = "unnamedplus";
-        providers.wl-copy.enable = true;
-      };
       # shortmess += "c";
 
       number = true;
