@@ -32,6 +32,8 @@
       list = true;
     };
 
+    plugins.nvim-cmp.enable = true;
+
     plugins.none-ls = {
       enable = true;
       # process delay in ms?
