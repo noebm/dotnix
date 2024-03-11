@@ -14,7 +14,13 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager.users.${userConfig.user} = {
+    imports = [ inputs.nixvim.homeManagerModules.nixvim ./config/nvim.nix ];
+    home.stateVersion = "23.11";
+  };
 
   # enable `nix flake ...` commands
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -146,6 +152,7 @@
     gcc
     clang
     glib.bin
+    wl-clipboard
   ];
 
   # opengl stuff for lutris / battlenet

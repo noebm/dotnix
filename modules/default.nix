@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./editor.nix
+    # ./editor.nix
     ./kde-connect.nix
     ./ps5-controller.nix
   ];
