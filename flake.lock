@@ -118,6 +118,25 @@
         "type": "github"
       }
     },
+    "kinect-audio": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dirtyRev": "0be77615381da68d695f84467be2b206eb57bc46-dirty",
+        "dirtyShortRev": "0be7761-dirty",
+        "lastModified": 1709468309,
+        "narHash": "sha256-b+qoHEf2Zf9XWx/2GVyb21sKKv4iK8kPCjUN36E2k/g=",
+        "type": "git",
+        "url": "file:///home/noebm/dev/kinect-audio-setup"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/noebm/dev/kinect-audio-setup"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1710021367,
@@ -229,6 +248,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "kinect-audio": "kinect-audio",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
       }

@@ -10,6 +10,11 @@
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kinect-audio = {
+      url = "/home/noebm/dev/kinect-audio-setup";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -17,6 +22,7 @@
     nixpkgs,
     home-manager,
     nixvim,
+    kinect-audio,
     ...
   } @ inputs: let
     systemConfig = {
@@ -33,6 +39,7 @@
       specialArgs = {inherit inputs systemConfig userConfig;};
       modules = [
         ./configuration.nix
+        kinect-audio.nixosModules.default
       ];
     };
   };
