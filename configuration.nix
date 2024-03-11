@@ -5,19 +5,13 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
-}: let
-  alejandra =
-    (import (builtins.fetchTarball {
-      url = "https://github.com/kamadorueda/alejandra/tarball/3.0.0";
-      sha256 = "18jm0d5xrxk38hw5sa470zgfz9xzdcyaskjhgjwhnmzd5fgacny4";
-    }) {})
-    .outPath;
-in {
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   # enable `nix flake ...` commands
@@ -144,7 +138,10 @@ in {
   };
 
   home-manager.users.noebm = {
-    imports = [./nvim.nix];
+    imports = [
+      inputs.nixvim.homeManagerModules.nixvim
+      ./nvim.nix
+    ];
     home.stateVersion = "23.11";
   };
 
@@ -157,7 +154,10 @@ in {
   };
 
   home-manager.users.work = {
-    imports = [./nvim.nix];
+    imports = [
+      inputs.nixvim.homeManagerModules.nixvim
+      ./nvim.nix
+    ];
     home.stateVersion = "23.11";
   };
 
