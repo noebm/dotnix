@@ -11,7 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./pkgs
+    ./modules
   ];
 
   # enable `nix flake ...` commands
