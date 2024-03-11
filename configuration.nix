@@ -11,6 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./pkgs
     inputs.nixvim.nixosModules.nixvim
     ./nvim.nix
   ];
