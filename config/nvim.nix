@@ -33,6 +33,14 @@
     };
 
     plugins.nvim-cmp.enable = true;
+    plugins.cmp-nvim-lsp.enable = true;
+    plugins.cmp-nvim-lsp-document-symbol.enable = true;
+    plugins.cmp-nvim-lsp-signature-help.enable = true;
+    plugins.cmp-buffer.enable = true;
+    plugins.cmp-cmdline.enable = true;
+    plugins.cmp-path.enable = true;
+    plugins.cmp-treesitter.enable = true;
+    # plugins.cmp-conventionalcommits.enable = true;
 
     plugins.none-ls = {
       enable = true;
