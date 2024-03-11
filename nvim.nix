@@ -1,9 +1,15 @@
 {pkgs, ...}: {
   programs.nixvim = {
     enable = true;
-    colorschemes.tokyonight = {
+
+    # colorschemes.tokyonight = {
+    #   enable = true;
+    #   style = "night";
+    # };
+
+    colorschemes.catppuccin = {
       enable = true;
-      style = "night";
+      flavour = "mocha";
     };
 
     globals = {
