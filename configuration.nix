@@ -14,6 +14,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules
+    ./wm
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -57,20 +58,8 @@
   # Allow unfree packages (currently only used for discord)
   nixpkgs.config.allowUnfree = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
 
-  services.xserver.videoDrivers = ["amdgpu"];
 
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-
-  # required for wayland
-  security.polkit.enable = true;
 
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
