@@ -214,5 +214,9 @@
     plugins.lualine = {
       enable = true;
     };
+
+    # random useful stuff
+    # Refactor blocks / variable using :Refactor
+    plugins.refactoring.enable = true;
   };
 }
