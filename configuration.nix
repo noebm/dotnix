@@ -19,7 +19,12 @@
   ];
 
   home-manager.users.${userConfig.user} = {
-    imports = [ inputs.nixvim.homeManagerModules.nixvim ./config/nvim.nix ];
+    imports = [
+      ./config/gitignore.nix
+      # nixvim
+      inputs.nixvim.homeManagerModules.nixvim
+      ./config/nvim.nix
+    ];
     home.stateVersion = "23.11";
   };
 
@@ -58,9 +63,6 @@
 
   # Allow unfree packages (currently only used for discord)
   nixpkgs.config.allowUnfree = true;
-
-
-
 
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
