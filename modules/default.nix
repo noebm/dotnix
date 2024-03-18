@@ -4,5 +4,6 @@
     ./kde-connect.nix
     ./ps5-controller.nix
     ./printer.nix
+    ./logitech.nix
   ];
 }
