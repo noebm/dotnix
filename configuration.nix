@@ -28,6 +28,28 @@
       inputs.nixvim.homeManagerModules.nixvim
       ./config/nvim.nix
     ];
+    home.packages = with pkgs; [
+      firefox
+      tree
+      discord
+      lutris
+      steam
+      wineWowPackages.stable
+      # wineWowPackages.waylandFull
+      yt-dlp
+      mpv
+
+      qbittorrent
+      tor-browser-bundle-bin
+
+      # language support for nvim
+      python3
+      cargo
+      rustc
+      luarocks # for nvim itself
+      nodejs
+    ];
+
     home.stateVersion = "23.11";
   };
 
@@ -112,27 +134,6 @@
   users.users.${userConfig.user} = {
     isNormalUser = true;
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      tree
-      discord
-      lutris
-      steam
-      wineWowPackages.stable
-      # wineWowPackages.waylandFull
-      yt-dlp
-      mpv
-
-      qbittorrent
-      tor-browser-bundle-bin
-
-      # language support for nvim
-      python3
-      cargo
-      rustc
-      luarocks # for nvim itself
-      nodejs
-    ];
   };
 
   users.users.work = {
