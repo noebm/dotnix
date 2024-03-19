@@ -18,6 +18,9 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+
   home-manager.users.${userConfig.user} = {
     imports = [
       ./config/gitignore.nix
