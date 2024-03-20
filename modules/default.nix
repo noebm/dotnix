@@ -5,6 +5,6 @@
     ./ps5-controller.nix
     ./printer.nix
     ./logitech.nix
-    ./harddrive.nix
+    # ./harddrive.nix
   ];
 }
