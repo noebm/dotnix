@@ -9,7 +9,8 @@
     description = "user daemon for configuration of logitech devices";
     enable = true;
     script = "${pkgs.solaar}/bin/solaar -w hide";
-    wantedBy = ["multi-user.target"];
+    # wantedBy = ["multi-user.target"];
+    wantedBy = ["graphical-session.target"];
 
     # fix locale error in C library
     environment.LC_ALL = "C";
