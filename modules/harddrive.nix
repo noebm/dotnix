@@ -2,9 +2,6 @@
   systemd.services.hd-idle = {
     description = "External HD spin down daemon";
     wantedBy = ["multi-user.target"];
-    serviceConfig = {
-      Type = "forking";
-      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 300";
-    };
+    script = "${pkgs.hd-idle}/bin/hd-idle";
   };
 }
