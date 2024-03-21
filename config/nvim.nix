@@ -93,6 +93,9 @@
       # which has a CVE
       # servers.nixd.enable = true;
       servers.pyright.enable = true;
+      servers.hls.enable = true;
+      servers.bashls.enable = true;
+      servers.nil_ls.enable = true;
 
       keymaps = {
         diagnostic = {
