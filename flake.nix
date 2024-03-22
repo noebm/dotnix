@@ -39,7 +39,10 @@
       specialArgs = {inherit inputs systemConfig userConfig;};
       modules = [
         ./configuration.nix
-        kinect-audio.nixosModules.default
+        {
+          services.udev.packages = [kinect-audio.packages."${systemConfig.system}".default];
+          # kinect-audio.nixosModules.default;
+        }
         ({pgks, ...}: {
           system.nixos.label =
             if self ? rev
