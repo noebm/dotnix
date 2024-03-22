@@ -48,6 +48,9 @@
       rustc
       luarocks # for nvim itself
       nodejs
+
+      # command line calculator
+      kalker
     ];
 
     home.stateVersion = "23.11";
