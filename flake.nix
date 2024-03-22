@@ -41,7 +41,6 @@
         ./configuration.nix
         {
           services.udev.packages = [kinect-audio.packages."${systemConfig.system}".default];
-          # kinect-audio.nixosModules.default;
         }
         ({pgks, ...}: {
           system.nixos.label =

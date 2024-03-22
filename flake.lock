@@ -125,11 +125,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711113040,
-        "narHash": "sha256-IsHpX0UIXs61h/DV3X3Z54qocFcjjiJVCQeDrJIer2o=",
+        "lastModified": 1711113964,
+        "narHash": "sha256-/8AshRHjSVqaTqBFbSx8SMaxCTgA5tGSJMrCTdIuYHk=",
         "ref": "refs/heads/nix/flake",
-        "rev": "26111bf53ea2a558ca0cceb36e8d9db64f530fad",
-        "revCount": 110,
+        "rev": "487492ba95393a7e4ede8129dbe323baf655a39b",
+        "revCount": 111,
         "type": "git",
         "url": "file:///home/noebm/dev/kinect-audio-setup"
       },
