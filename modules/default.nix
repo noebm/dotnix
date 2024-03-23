@@ -6,5 +6,6 @@
     ./printer.nix
     ./logitech.nix
     ./harddrive.nix
+    ./games
   ];
 }
