@@ -12,14 +12,9 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./modules
     ./wm
-    inputs.home-manager.nixosModules.home-manager
   ];
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
 
   home-manager.users.${userConfig.user} = {
     imports = [

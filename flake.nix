@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
   outputs = {
     self,
     nixpkgs,
@@ -33,22 +32,33 @@
       user = "noebm";
       email = "moritz.noebauer@gmail.com";
     };
+    hardwareConfig = [./hardware-configuration.nix];
+    homeConfig = [
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useUserPackages = true;
+        home-manager.useGlobalPkgs = true;
+      }
+    ];
   in {
     nixosConfigurations.${systemConfig.hostname} = nixpkgs.lib.nixosSystem {
       system = systemConfig.system;
       specialArgs = {inherit inputs systemConfig userConfig;};
-      modules = [
-        ./configuration.nix
-        {
-          services.udev.packages = [kinect-audio.packages."${systemConfig.system}".default];
-        }
-        ({pgks, ...}: {
-          system.nixos.label =
-            if self ? rev
-            then self.rev
-            else throw "Refusing to build from dirty Git tree!";
-        })
-      ];
+      modules =
+        hardwareConfig
+        ++ homeConfig
+        ++ [
+          ./configuration.nix
+          {
+            services.udev.packages = [kinect-audio.packages."${systemConfig.system}".default];
+          }
+          ({pgks, ...}: {
+            system.nixos.label =
+              if self ? rev
+              then self.rev
+              else throw "Refusing to build from dirty Git tree!";
+          })
+        ];
     };
   };
 }
