@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     # ./editor.nix
     ./kde-connect.nix
@@ -6,6 +6,7 @@
     ./printer.nix
     ./logitech.nix
     ./harddrive.nix
+    ./kinect-audio.nix
     ./games
   ];
 }

@@ -46,15 +46,12 @@
     ];
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs userConfig hostname;};
+      specialArgs = {inherit inputs userConfig system hostname;};
       modules =
         homeConfig
         ++ [
           ./hosts/${hostname}
           ./hosts/${hostname}/hardware-configuration.nix
-          {
-            services.udev.packages = [kinect-audio.packages."${system}".default];
-          }
           ({pgks, ...}: {
             system.nixos.label =
               if self ? rev
