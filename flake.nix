@@ -24,19 +24,16 @@
     kinect-audio,
     ...
   } @ inputs: let
-    systemConfig = {
-      hostname = "nixos";
-      system = "x86_64-linux";
-    };
+    hostname = "nixos";
+    system = "x86_64-linux";
     userConfig = {
       user = "noebm";
       email = "moritz.noebauer@gmail.com";
     };
     pkgs = import nixpkgs {
-      inherit (systemConfig) system;
+      inherit system;
       config.allowUnfree = true;
     };
-    hardwareConfig = [./hardware-configuration.nix];
     homeConfig = [
       home-manager.nixosModules.home-manager
       {
@@ -48,16 +45,15 @@
       }
     ];
   in {
-    nixosConfigurations.${systemConfig.hostname} = nixpkgs.lib.nixosSystem {
-      system = systemConfig.system;
-      specialArgs = {inherit inputs systemConfig userConfig;};
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs userConfig hostname;};
       modules =
-        hardwareConfig
-        ++ homeConfig
+        homeConfig
         ++ [
-          ./configuration.nix
+          ./hosts/${hostname}
+          ./hosts/${hostname}/hardware-configuration.nix
           {
-            services.udev.packages = [kinect-audio.packages."${systemConfig.system}".default];
+            services.udev.packages = [kinect-audio.packages."${system}".default];
           }
           ({pgks, ...}: {
             system.nixos.label =
