@@ -2,13 +2,16 @@
   pkgs,
   nixvim,
   ...
-}: {
-  imports = [
-    ./config/gitignore.nix
-    # nixvim
+}: let
+  flakes = [
     nixvim.homeManagerModules.nixvim
-    ./config/nvim.nix
   ];
+  home-modules = [
+    ./home-modules/gitignore.nix
+    ./home-modules/nvim.nix
+  ];
+in {
+  imports = flakes ++ home-modules;
   home.packages = with pkgs; [
     firefox
     tree
