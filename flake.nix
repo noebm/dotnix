@@ -33,7 +33,7 @@
       email = "moritz.noebauer@gmail.com";
     };
     pkgs = import nixpkgs {
-      system = "${systemConfig.system}";
+      inherit (systemConfig) system;
       config.allowUnfree = true;
     };
     hardwareConfig = [./hardware-configuration.nix];
@@ -43,8 +43,7 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
         home-manager.users.${userConfig.user} = import ./home.nix {
-          inherit pkgs;
-          nixvim = inputs.nixvim;
+          inherit pkgs nixvim;
         };
       }
     ];
