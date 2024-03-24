@@ -32,12 +32,20 @@
       user = "noebm";
       email = "moritz.noebauer@gmail.com";
     };
+    pkgs = import nixpkgs {
+      system = "${systemConfig.system}";
+      config.allowUnfree = true;
+    };
     hardwareConfig = [./hardware-configuration.nix];
     homeConfig = [
       home-manager.nixosModules.home-manager
       {
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
+        home-manager.users.${userConfig.user} = import ./home.nix {
+          inherit pkgs;
+          nixvim = inputs.nixvim;
+        };
       }
     ];
   in {

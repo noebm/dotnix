@@ -16,8 +16,6 @@
     ./wm
   ];
 
-  home-manager.users.${userConfig.user} = import ./home.nix { inherit pkgs; nixvim = inputs.nixvim; };
-
   # enable `nix flake ...` commands
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
