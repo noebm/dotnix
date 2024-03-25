@@ -38,5 +38,7 @@ in {
     kalker
   ];
 
+  xdg.enable = true;
+
   home.stateVersion = "23.11";
 }
