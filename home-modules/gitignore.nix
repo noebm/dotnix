@@ -14,4 +14,6 @@
   ];
   programs.git.userEmail = userConfig.email;
   programs.git.userName = userConfig.name;
+
+  programs.git.delta.enable = true;
 }
