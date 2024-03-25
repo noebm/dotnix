@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-NIXOS_CONFIG=/home/noebm/dotfiles/nixos
-
+NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
 pushd $NIXOS_CONFIG
 
 sudo nixos-rebuild switch --flake .
