@@ -210,6 +210,11 @@
       crates-nvim.enable = true;
     };
 
+    # agda
+    extraPlugins = with pkgs.vimPlugins; [
+      agda-vim
+    ];
+
     plugins.which-key = {
       enable = true;
     };
