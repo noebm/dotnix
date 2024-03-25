@@ -9,7 +9,7 @@
   ];
   home-modules = [
     (import ./home-modules/git.nix {inherit userConfig;})
-    ./home-modules/nvim.nix
+    ./home-modules/nvim
   ];
 in {
   imports = flakes ++ home-modules;

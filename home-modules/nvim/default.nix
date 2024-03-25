@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./nvim/agda.nix
+    ./agda.nix
   ];
   programs.nixvim = {
     enable = true;
