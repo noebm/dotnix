@@ -29,6 +29,7 @@
     userConfig = {
       user = "noebm";
       email = "moritz.noebauer@gmail.com";
+      name = "Moritz Noebauer";
     };
     pkgs = import nixpkgs {
       inherit system;
@@ -40,7 +41,7 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
         home-manager.users.${userConfig.user} = import ./home.nix {
-          inherit pkgs nixvim;
+          inherit userConfig pkgs nixvim;
         };
       }
     ];

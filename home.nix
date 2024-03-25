@@ -1,13 +1,14 @@
 {
   pkgs,
   nixvim,
+  userConfig,
   ...
 }: let
   flakes = [
     nixvim.homeManagerModules.nixvim
   ];
   home-modules = [
-    ./home-modules/gitignore.nix
+    (import ./home-modules/gitignore.nix {inherit userConfig;})
     ./home-modules/nvim.nix
   ];
 in {
