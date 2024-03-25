@@ -1,6 +1,8 @@
 {userConfig, ...}: {
   programs.git.enable = true;
   programs.git.ignores = [
+    # agda
+    "*.agdai"
     # nix
     "*.drv"
     "result"
