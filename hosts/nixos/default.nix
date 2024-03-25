@@ -99,14 +99,6 @@
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
   };
 
-  users.users.work = {
-    isNormalUser = true;
-    packages = with pkgs; [
-      firefox
-      python3
-    ];
-  };
-
   services.fwupd.enable = true;
 
   # List packages installed in system profile. To search, run:
