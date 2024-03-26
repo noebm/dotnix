@@ -8,7 +8,7 @@
     nixvim.homeManagerModules.nixvim
   ];
   home-modules = [
-    (import ./home-modules/git.nix {inherit userConfig;})
+    (import ./home-modules/git.nix {inherit pkgs userConfig;})
     ./home-modules/nvim
     ./home-modules/emacs.nix
   ];
