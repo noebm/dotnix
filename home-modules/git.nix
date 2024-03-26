@@ -1,6 +1,6 @@
 {
   pkgs,
-  userConfig,
+  config,
   ...
 }: let
   delta = pkgs.fetchFromGitHub {
@@ -30,6 +30,6 @@ in {
   programs.git.delta.options.features = "colibri";
   programs.git.includes = [
     {path = "${delta}/themes.gitconfig";}
-    {path = userConfig.git_secrets;}
+    {path = config.sops.templates."git_secrets".path;}
   ];
 }

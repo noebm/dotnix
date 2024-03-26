@@ -52,11 +52,7 @@
         sops.templates."git_secrets".owner = user;
 
         home-manager.users.${user} = import ./home.nix {
-          inherit pkgs nixvim;
-          userConfig = {
-            inherit user;
-            git_secrets = config.sops.templates."git_secrets".path;
-          };
+          inherit pkgs nixvim config;
         };
       })
     ];
