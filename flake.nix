@@ -15,6 +15,11 @@
       url = "/home/noebm/dev/kinect-audio-setup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -22,34 +27,60 @@
     home-manager,
     nixvim,
     kinect-audio,
+    sops-nix,
     ...
   } @ inputs: let
     hostname = "nixos";
     system = "x86_64-linux";
-    userConfig = {
-      user = "noebm";
-      email = "moritz.noebauer@gmail.com";
-      name = "Moritz Noebauer";
-    };
+    user = "noebm";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
     homeConfig = [
       home-manager.nixosModules.home-manager
-      {
+      # sops-nix.homeManagerModules.sops
+      ({config, ...}: {
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
-        home-manager.users.${userConfig.user} = import ./home.nix {
-          inherit userConfig pkgs nixvim;
+
+        sops.templates."git_secrets".content = ''
+          [user]
+            name = ${config.sops.placeholder."git/full_name"}
+            email = ${config.sops.placeholder."git/email"}
+        '';
+        sops.templates."git_secrets".owner = user;
+
+        home-manager.users.${user} = import ./home.nix {
+          inherit pkgs nixvim;
+          userConfig = {
+            inherit user;
+            git_secrets = config.sops.templates."git_secrets".path;
+          };
         };
+      })
+    ];
+    secretConfig = [
+      sops-nix.nixosModules.sops
+      {
+        sops.defaultSopsFile = ./secrets/user.yaml;
+        sops.defaultSopsFormat = "yaml";
+        sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+        sops.secrets."git/email".owner = user;
+        sops.secrets."git/full_name".owner = user;
       }
     ];
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs userConfig system hostname;};
+      specialArgs = {
+        inherit inputs system hostname;
+        userConfig = {
+          inherit user;
+        };
+      };
       modules =
         homeConfig
+        ++ secretConfig
         ++ [
           ./hosts/${hostname}
           ./hosts/${hostname}/hardware-configuration.nix

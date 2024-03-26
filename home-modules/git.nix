@@ -25,12 +25,11 @@ in {
     "__pycache__/"
     ".venv/"
   ];
-  programs.git.userEmail = userConfig.email;
-  programs.git.userName = userConfig.name;
 
   programs.git.delta.enable = true;
   programs.git.delta.options.features = "colibri";
   programs.git.includes = [
     {path = "${delta}/themes.gitconfig";}
+    {path = userConfig.git_secrets;}
   ];
 }
