@@ -1,10 +1,11 @@
-
+# Quick references
 
 ## Sops
 
+See [sops-nix](https://github.com/Mic92/sops-nix).
+
 ### Setup
 
-See [sops-nix](https://github.com/Mic92/sops-nix).
 
 In short:
 - Generate user secret.
