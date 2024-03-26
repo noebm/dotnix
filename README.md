@@ -1,6 +1,8 @@
 
 
-# Sops configuration
+## Sops
+
+### Setup
 
 See [sops-nix](https://github.com/Mic92/sops-nix).
 
@@ -16,3 +18,9 @@ nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-ag
 ```
 - Include public keys in `.sops.yaml`.
 
+### Modification
+Run
+```bash
+nix-shell -p sops --run "sops secrets/<something>.yaml"
+```
+which will encrypt the written file.
