@@ -78,6 +78,7 @@
         homeConfig
         ++ secretConfig
         ++ [
+          kinect-audio.nixosModules.default
           ./hosts/${hostname}
           ./hosts/${hostname}/hardware-configuration.nix
           ({pgks, ...}: {

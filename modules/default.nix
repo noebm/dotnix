@@ -5,6 +5,5 @@
     ./printer.nix
     ./logitech.nix
     ./harddrive.nix
-    ./kinect-audio.nix
   ];
 }
