@@ -12,7 +12,7 @@
     };
 
     kinect-audio = {
-      url = "/home/noebm/dev/kinect-audio-setup";
+      url = "github:noebm/kinect-audio-setup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

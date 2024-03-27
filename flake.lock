@@ -125,17 +125,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1711536703,
-        "narHash": "sha256-Fzlx76IbBeAd1yUFBON2z4lfknddvj3zgiYTFupttjs=",
-        "ref": "refs/heads/k4w_2022",
-        "rev": "4e6a8a341fdab3b7373f07482c591297a55a0dcb",
-        "revCount": 86,
-        "type": "git",
-        "url": "file:///home/noebm/dev/kinect-audio-setup"
+        "lastModified": 1711537648,
+        "narHash": "sha256-4WH/zxxCd9u0Q68cZ/CnZu2CQDnxaHwpEABJatPONkQ=",
+        "owner": "noebm",
+        "repo": "kinect-audio-setup",
+        "rev": "c385117de82148463a49c2a758cf1aa749c7c22d",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/noebm/dev/kinect-audio-setup"
+        "owner": "noebm",
+        "repo": "kinect-audio-setup",
+        "type": "github"
       }
     },
     "nixpkgs": {
