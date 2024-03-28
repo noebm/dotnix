@@ -84,7 +84,6 @@
         ++ [
           kinect-audio.nixosModules.default
           ./hosts/${hostname}
-          ./hosts/${hostname}/hardware-configuration.nix
           ({pgks, ...}: {
             system.nixos.label =
               if self ? rev
