@@ -44,13 +44,6 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
-        sops.templates."git_secrets".content = ''
-          [user]
-            name = ${config.sops.placeholder."git/full_name"}
-            email = ${config.sops.placeholder."git/email"}
-        '';
-        sops.templates."git_secrets".owner = user;
-
         home-manager.users.${user} = import ./home.nix {
           inherit pkgs nixvim config;
         };
@@ -58,13 +51,24 @@
     ];
     secretConfig = [
       sops-nix.nixosModules.sops
-      {
+      ({config, ...}: {
         sops.defaultSopsFile = ./secrets/user.yaml;
         sops.defaultSopsFormat = "yaml";
+
         sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+
         sops.secrets."git/email".owner = user;
         sops.secrets."git/full_name".owner = user;
-      }
+
+        sops.templates."git_secrets" = {
+          content = ''
+            [user]
+              name = ${config.sops.placeholder."git/full_name"}
+              email = ${config.sops.placeholder."git/email"}
+          '';
+          owner = user;
+        };
+      })
     ];
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
