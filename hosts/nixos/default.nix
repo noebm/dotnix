@@ -17,6 +17,11 @@
     ../../wm
   ];
 
+  fileSystems."/run/media/noebm/SSD Data" = {
+    device = "/dev/disk/by-uuid/ed32536e-87d6-4403-97bc-64128bdd1370";
+    fsType = "ext4";
+  };
+
   # enable `nix flake ...` commands
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
