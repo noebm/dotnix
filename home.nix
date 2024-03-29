@@ -11,6 +11,7 @@
     (import ./home-modules/git.nix {inherit pkgs config;})
     ./home-modules/nvim
     ./home-modules/emacs.nix
+    ./home-modules/firefox.nix
   ];
 in {
   imports = flakes ++ home-modules;

@@ -5,5 +5,6 @@
     ./printer.nix
     ./logitech.nix
     ./harddrive.nix
+    ./firefox.nix
   ];
 }
