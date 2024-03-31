@@ -99,6 +99,7 @@
       servers.hls.enable = true;
       servers.bashls.enable = true;
       servers.nil_ls.enable = true;
+      servers.ccls.enable = true;
 
       keymaps = {
         diagnostic = {
