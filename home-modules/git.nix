@@ -32,4 +32,7 @@ in {
     {path = "${delta}/themes.gitconfig";}
     {path = config.sops.templates."git_secrets".path;}
   ];
+
+  # git commit --fixup, but automatic
+  home.packages = [pkgs.git-absorb];
 }
