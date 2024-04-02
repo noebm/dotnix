@@ -6,7 +6,6 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
   services.xserver.videoDrivers = ["amdgpu"];
 
   services.xserver.displayManager.sddm.enable = true;

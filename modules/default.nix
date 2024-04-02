@@ -6,5 +6,6 @@
     ./logitech.nix
     ./harddrive.nix
     ./firefox.nix
+    ./keyboard.nix
   ];
 }
