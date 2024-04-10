@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kinect-audio = {
-      url = "github:noebm/kinect-audio-setup";
+    kinect-firmware-utils = {
+      url = "github:noebm/kinect-firmware-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,7 +26,7 @@
     nixpkgs,
     home-manager,
     nixvim,
-    kinect-audio,
+    kinect-firmware-utils,
     sops-nix,
     ...
   } @ inputs: let
@@ -82,7 +82,7 @@
         homeConfig
         ++ secretConfig
         ++ [
-          kinect-audio.nixosModules.default
+          kinect-firmware-utils.nixosModules.${system}.default
           ./hosts/${hostname}
           ({pgks, ...}: {
             system.nixos.label =
