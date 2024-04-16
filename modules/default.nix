@@ -7,5 +7,6 @@
     ./harddrive.nix
     ./firefox.nix
     ./keyboard.nix
+    ./development.nix
   ];
 }
