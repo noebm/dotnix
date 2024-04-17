@@ -23,6 +23,27 @@
         "type": "github"
       }
     },
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "kinect-firmware-utils",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712681629,
+        "narHash": "sha256-bMDXn4AkTXLCpoZbII6pDGoSeSe9gI87jxPsHRXgu/E=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "220387ac8e99cbee0ca4c95b621c4bc782b6a235",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -120,45 +141,23 @@
     },
     "kinect-firmware-utils": {
       "inputs": {
-        "naersk": "naersk",
+        "crane": "crane",
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1712775183,
-        "narHash": "sha256-biw3eY3ah4cZF13EbSfk0hqHNHrJSPXnivDGOqCxa3I=",
+        "lastModified": 1713310422,
+        "narHash": "sha256-98ARrcBUVNfpw+gqIbjaj6L5yTukPsEtR8taEIv/mO0=",
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "rev": "30cd568e99ebac3e57649bb6f1f9beffa20bccd4",
+        "rev": "359ea96e55a04ec16cb1d6bc95e06a17381e7c89",
         "type": "github"
       },
       "original": {
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "type": "github"
-      }
-    },
-    "naersk": {
-      "inputs": {
-        "nixpkgs": [
-          "kinect-firmware-utils",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1698420672,
-        "narHash": "sha256-/TdeHMPRjjdJub7p7+w55vyABrsJlt5QkznPYy55vKA=",
-        "owner": "nix-community",
-        "repo": "naersk",
-        "rev": "aeb58d5e8faead8980a807c840232697982d47b9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "master",
-        "repo": "naersk",
         "type": "github"
       }
     },
