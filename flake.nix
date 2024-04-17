@@ -92,5 +92,10 @@
           })
         ];
     };
+    packages.${system}.nvim = let
+      nixvim' = nixvim.legacyPackages.${system};
+      config = import ./nvim.nix;
+    in
+      nixvim'.makeNixvim config;
   };
 }
