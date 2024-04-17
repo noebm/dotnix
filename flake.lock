@@ -7,7 +7,7 @@
           "nixpkgs"
         ],
         "poetry2nix": "poetry2nix",
-        "utils": "utils_2"
+        "utils": "utils"
       },
       "locked": {
         "lastModified": 1680308980,
@@ -62,6 +62,24 @@
     },
     "flake-utils": {
       "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "inputs": {
         "systems": "systems_2"
       },
       "locked": {
@@ -78,7 +96,7 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
+    "flake-utils_3": {
       "inputs": {
         "systems": "systems_3"
       },
@@ -142,17 +160,18 @@
     "kinect-firmware-utils": {
       "inputs": {
         "crane": "crane",
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils"
+        "wix-extract": "wix-extract"
       },
       "locked": {
-        "lastModified": 1713313129,
-        "narHash": "sha256-MxP532fPd3vW9lqjS4yMq1h7i+jmKQkTKfZtSGmKF0w=",
+        "lastModified": 1713375543,
+        "narHash": "sha256-8ikh+KWtEbyEOYHQv6Yz0FVXMbxUG/KdrDy8VXvKAxk=",
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "rev": "e3b28affa07c9ec9031dbff56cbea6ff132c07c8",
+        "rev": "b77f7dd30c972bbc80c255e80198d25dad835c4d",
         "type": "github"
       },
       "original": {
@@ -212,7 +231,7 @@
     "nixvim": {
       "inputs": {
         "beautysh": "beautysh",
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -263,7 +282,7 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "gitignore": "gitignore",
         "nixpkgs": [
           "nixvim",
@@ -361,24 +380,6 @@
       }
     },
     "utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_2": {
       "locked": {
         "lastModified": 1678901627,
         "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
@@ -390,6 +391,31 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wix-extract": {
+      "inputs": {
+        "flake-utils": [
+          "kinect-firmware-utils",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "kinect-firmware-utils",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713366621,
+        "narHash": "sha256-ZyZrZ5ro8q6ajsABBK+6cfcPqSEQte3gYx06CqYVxtw=",
+        "owner": "noebm",
+        "repo": "wix-extract",
+        "rev": "072e391e46842efbbc57c6b6e1b6fe5c452dc4d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noebm",
+        "repo": "wix-extract",
         "type": "github"
       }
     }
