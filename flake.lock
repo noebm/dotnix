@@ -148,11 +148,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1713310422,
-        "narHash": "sha256-98ARrcBUVNfpw+gqIbjaj6L5yTukPsEtR8taEIv/mO0=",
+        "lastModified": 1713313129,
+        "narHash": "sha256-MxP532fPd3vW9lqjS4yMq1h7i+jmKQkTKfZtSGmKF0w=",
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "rev": "359ea96e55a04ec16cb1d6bc95e06a17381e7c89",
+        "rev": "e3b28affa07c9ec9031dbff56cbea6ff132c07c8",
         "type": "github"
       },
       "original": {
