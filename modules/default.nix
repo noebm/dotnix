@@ -1,4 +1,4 @@
-{...}: {
+{nixos-hardware, ...}: {
   imports = [
     ./kde-connect.nix
     ./ps5-controller.nix

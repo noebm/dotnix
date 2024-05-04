@@ -180,6 +180,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1714746424,
+        "narHash": "sha256-Jdyw7VcM+jQ0uSXgjFj8UdXZ229yOvPNlYkKyKyHA4s=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "3f017311191fe6d501ca2496a835d012f656ee9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1713145326,
@@ -308,6 +324,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "kinect-firmware-utils": "kinect-firmware-utils",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix"
