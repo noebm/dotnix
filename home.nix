@@ -20,7 +20,6 @@ in {
     tree
     discord
     lutris
-    steam
     wineWowPackages.stable
     # wineWowPackages.waylandFull
     yt-dlp
