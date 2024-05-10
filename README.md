@@ -1,5 +1,14 @@
 # Quick references
 
+## System profiles and boot menu entries
+
+- Profile links are at `/nix/var/nix/profiles/`
+- Boot enties are at `/boot/loader/entries`
+
+Running the following might help to remove boot entries?
+```bash
+/run/current-system/bin/switch-to-configuration boot
+```
 ## nvim
 
 The nvim config resides in `nvim.nix` and uses nixvim.
