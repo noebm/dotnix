@@ -76,7 +76,7 @@
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs system hostname;
+        inherit self inputs system hostname;
         userConfig = {
           inherit user;
         };
@@ -88,12 +88,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           kinect-firmware-utils.nixosModules.${system}.default
           ./hosts/${hostname}
-          ({pgks, ...}: {
-            system.nixos.label =
-              if self ? rev
-              then self.rev
-              else throw "Refusing to build from dirty Git tree!";
-          })
+          ./modules/dirty.nix
         ];
     };
     packages.${system}.nvim = let
