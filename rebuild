@@ -3,8 +3,8 @@
 NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
 pushd $NIXOS_CONFIG
 
-# TODO use profile flag for non-main branches
-sudo nixos-rebuild switch --flake .
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+sudo nixos-rebuild switch --profile-name ${BRANCH} --flake .
 
 popd
 
