@@ -1,7 +1,7 @@
 {
   pkgs,
   home-manager,
-  userConfig,
+  user,
   ...
 }: {
   programs.hyprland.enable = true;
@@ -10,7 +10,7 @@
   # https://wiki.hyprland.org/Configuring/Example-configurations/
   # https://github.com/notusknot/dotfiles-nix/blob/main/modules/hyprland/hyprland.conf
   # for inspiration
-  # home-manager.users.${userConfig.user} = {
+  # home-manager.users.${user} = {
   #   programs.waybar = {
   #     enable = true;
   #     # settings = {
