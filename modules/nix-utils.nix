@@ -6,7 +6,7 @@
 
   # cant remember nvd
   environment.interactiveShellInit = ''
-    alias nix-diff='nvd'
+    alias nix-diff='nvd diff'
   '';
 
   nix.optimise = {
