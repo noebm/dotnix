@@ -48,7 +48,7 @@
         home-manager.useGlobalPkgs = true;
 
         home-manager.users.${user} = import ./home.nix {
-          inherit pkgs nixvim config;
+          inherit pkgs config inputs system;
         };
       })
     ];
@@ -71,6 +71,7 @@
           ./modules/dirty.nix
         ];
     };
+
     packages.${system}.nvim = let
       nixvim' = nixvim.legacyPackages.${system};
       config = import ./nvim.nix;

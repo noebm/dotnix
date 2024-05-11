@@ -1,21 +1,19 @@
 {
   pkgs,
-  nixvim,
   config,
+  inputs,
+  system,
   ...
 }: let
-  flakes = [
-    nixvim.homeManagerModules.nixvim
-  ];
   home-modules = [
     (import ./home-modules/git.nix {inherit pkgs config;})
-    ./home-modules/nvim
     ./home-modules/emacs.nix
     ./home-modules/firefox.nix
   ];
 in {
-  imports = flakes ++ home-modules;
+  imports = home-modules;
   home.packages = with pkgs; [
+    inputs.self.packages.${system}.nvim
     firefox
     tree
     discord
