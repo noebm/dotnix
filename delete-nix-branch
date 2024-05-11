@@ -44,6 +44,7 @@ fi
 
 echo "Unlinking builds."
 for link in ${MATCHING_BUILDS[@]}; do
+  echo "Unlinking ${link}."
   sudo unlink "$link"
 done
 
