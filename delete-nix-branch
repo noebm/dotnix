@@ -76,11 +76,18 @@ set -e
 echo "Deleting branch."
 git branch -d ${BRANCH}
 
-echo "Unlinking builds."
-for link in ${MATCHING_BUILDS[@]}; do
-  echo "Unlinking ${link}."
-  sudo unlink "$link"
-done
+if [[ "$N_MATCHING_BUILDS" -gt 0 ]]; then
 
-echo "Regenerating boot entries."
-sudo /run/current-system/bin/switch-to-configuration boot
+  echo "Unlinking builds."
+  for link in ${MATCHING_BUILDS[@]}; do
+    echo "Unlinking ${link}."
+    sudo unlink "$link"
+  done
+
+  echo "Regenerating boot entries."
+  sudo /run/current-system/bin/switch-to-configuration boot
+
+else
+  # TODO actually check that there are no boot entries
+  echo "No profiles and boot entries."
+fi
