@@ -9,16 +9,6 @@ Running the following might help to remove boot entries?
 ```bash
 /run/current-system/bin/switch-to-configuration boot
 ```
-## nvim
-
-The nvim config resides in `nvim.nix` and uses nixvim.
-The configuration can be tested via
-```bash
-# to run directly
-nix run .#nvim
-# to build
-nix build .#nvim
-```
 
 ## Sops
 
