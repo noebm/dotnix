@@ -41,10 +41,12 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
 fi
 
+echo "Unlinking builds."
 for link in ${MATCHING_BUILDS[@]}; do
   sudo unlink "$link"
 done
 
+echo "Deleting branch."
 git branch -D ${BRANCH}
 
 echo "Regenerating boot entries."
