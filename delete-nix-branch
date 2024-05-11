@@ -20,8 +20,15 @@ exit_if_branch_invalid () {
 
 POSITIONAL_ARGS=()
 
+FORCE=false
+
 while [[ $# -gt 0 ]]; do
   case $1 in
+    -f|--force)
+      FORCE=true
+      echo "Warning force enabled!"
+      shift
+      ;;
     -*|--*)
       echo "Unknown option $1"
       exit 1
@@ -57,8 +64,14 @@ for link in ${SYSTEM_PROFILES_ROOT}/${BRANCH}*; do
 done
 N_MATCHING_BUILDS=${#MATCHING_BUILDS[@]}
 
+if [ "$FORCE" = true ]; then
+  GIT_CMD="git branch -D ${BRANCH}"
+else 
+  GIT_CMD="git branch -d ${BRANCH}"
+fi
+
 # TODO only use -D when explicitly forced
-echo "1. Will run \"git branch -d ${BRANCH}\""
+echo "1. Will run \"${GIT_CMD}\""
 echo "2. Will unlink $N_MATCHING_BUILDS matching builds."
 echo "3. Regenerate boot entries."
 
@@ -74,7 +87,13 @@ fi
 set -e
 
 echo "Deleting branch."
-git branch -d ${BRANCH}
+# FIXME unify with GIT_CMD
+if [ "$FORCE" = true ]; then
+  git branch -D ${BRANCH}
+else
+  git branch -d ${BRANCH}
+fi
+
 
 if [[ "$N_MATCHING_BUILDS" -gt 0 ]]; then
 
