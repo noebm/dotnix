@@ -30,8 +30,13 @@ exit_if_branch_invalid $BRANCH
 
 SYSTEM_PROFILES_ROOT="/nix/var/nix/profiles/system-profiles"
 
-MATCHING_BUILDS=$(ls -d ${SYSTEM_PROFILES_ROOT}/${BRANCH}*)
-N_MATCHING_BUILDS=$(wc -w <<< $MATCHING_BUILDS)
+shopt -s nullglob
+MATCHING_BUILDS=()
+for link in ${SYSTEM_PROFILES_ROOT}/${BRANCH}*; do
+  [ -L "$link" ] || continue
+  MATCHING_BUILDS+=($link)
+done
+N_MATCHING_BUILDS=${#MATCHING_BUILDS[@]}
 
 # TODO only use -D when explicitly forced
 echo "1. Will run \"git branch -d ${BRANCH}\""
