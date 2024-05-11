@@ -26,6 +26,12 @@ in {
     ".venv/"
   ];
 
+  programs.git.extraConfig = {
+    init = {
+      defaultBranch = "main";
+    };
+  };
+
   programs.git.delta.enable = true;
   programs.git.delta.options.features = "colibri";
   programs.git.includes = [
