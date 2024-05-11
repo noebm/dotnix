@@ -28,10 +28,9 @@ SYSTEM_PROFILES_ROOT="/nix/var/nix/profiles/system-profiles"
 MATCHING_BUILDS=$(ls -d ${SYSTEM_PROFILES_ROOT}/${BRANCH}*)
 N_MATCHING_BUILDS=$(wc -w <<< $MATCHING_BUILDS)
 
-echo "1. Will unlink $N_MATCHING_BUILDS matching builds."
 # TODO only use -D when explicitly forced
-# check for post merge build if -d (no force) is used
-echo "2. Will run \"git branch -D ${BRANCH}\""
+echo "1. Will run \"git branch -d ${BRANCH}\""
+echo "2. Will unlink $N_MATCHING_BUILDS matching builds."
 echo "3. Regenerate boot entries."
 
 read -p "Are you sure? " -n 1 -r
@@ -42,14 +41,17 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
+# exit on nonzero status code
+set -e
+
+echo "Deleting branch."
+git branch -d ${BRANCH}
+
 echo "Unlinking builds."
 for link in ${MATCHING_BUILDS[@]}; do
   echo "Unlinking ${link}."
   sudo unlink "$link"
 done
-
-echo "Deleting branch."
-git branch -D ${BRANCH}
 
 echo "Regenerating boot entries."
 sudo /run/current-system/bin/switch-to-configuration boot
