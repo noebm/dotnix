@@ -18,14 +18,33 @@ exit_if_branch_invalid () {
   fi
 }
 
-LASTARG="$#"
+POSITIONAL_ARGS=()
 
-if [[ $LASTARG != 1 ]]; then
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=($1)
+      shift
+      ;;
+  esac
+
+done
+
+set -- "${POSITIONAL_ARGS[@]}"
+
+if [[ -n "$1" ]]; then
+  BRANCH="$1"
+fi
+
+if [ -z ${BRANCH+x} ]; then
   echo "No branch specified!"
   exit 1
 fi
 
-BRANCH="$1"
 exit_if_branch_invalid $BRANCH
 
 SYSTEM_PROFILES_ROOT="/nix/var/nix/profiles/system-profiles"
