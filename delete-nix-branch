@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+exit_if_branch_invalid () {
+  BRANCH="$1"
+  if ! git rev-parse --verify ${BRANCH} >/dev/null 2>&1 ; then
+    echo "Branch ${BRANCH} does not exist."
+    exit 2
+  fi
+
+  echo "Branch ${BRANCH} selected."
+
+  if [ "${BRANCH}" = "main" ]; then
+    echo "Never deleting ${BRANCH}."
+    exit 3
+  elif [ "${BRANCH}" = "master" ]; then
+    echo "Never deleting ${BRANCH}."
+    exit 3
+  fi
+}
+
 LASTARG="$#"
 
 if [[ $LASTARG != 1 ]]; then
@@ -8,20 +26,7 @@ if [[ $LASTARG != 1 ]]; then
 fi
 
 BRANCH="$1"
-if ! git rev-parse --verify ${BRANCH} >/dev/null 2>&1 ; then
-  echo "Branch ${BRANCH} does not exist."
-  exit 2
-fi
-
-echo "Branch ${BRANCH} selected."
-
-if [ "${BRANCH}" = "main" ]; then
-  echo "Never deleting ${BRANCH}."
-  exit 3
-elif [ "${BRANCH}" = "master" ]; then
-  echo "Never deleting ${BRANCH}."
-  exit 3
-fi
+exit_if_branch_invalid $BRANCH
 
 SYSTEM_PROFILES_ROOT="/nix/var/nix/profiles/system-profiles"
 
