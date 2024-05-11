@@ -1,37 +1,65 @@
 #!/usr/bin/env bash
 
-LASTARG="$#"
+exit_if_branch_invalid () {
+  BRANCH="$1"
+  if ! git rev-parse --verify ${BRANCH} >/dev/null 2>&1 ; then
+    echo "Branch ${BRANCH} does not exist."
+    exit 2
+  fi
 
-if [[ $LASTARG != 1 ]]; then
+  echo "Branch ${BRANCH} selected."
+
+  if [ "${BRANCH}" = "main" ]; then
+    echo "Never deleting ${BRANCH}."
+    exit 3
+  elif [ "${BRANCH}" = "master" ]; then
+    echo "Never deleting ${BRANCH}."
+    exit 3
+  fi
+}
+
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=($1)
+      shift
+      ;;
+  esac
+
+done
+
+set -- "${POSITIONAL_ARGS[@]}"
+
+if [[ -n "$1" ]]; then
+  BRANCH="$1"
+fi
+
+if [ -z ${BRANCH+x} ]; then
   echo "No branch specified!"
   exit 1
 fi
 
-BRANCH="$1"
-if ! git rev-parse --verify ${BRANCH} >/dev/null 2>&1 ; then
-  echo "Branch ${BRANCH} does not exist."
-  exit 2
-fi
-
-echo "Branch ${BRANCH} selected."
-
-if [ "${BRANCH}" = "main" ]; then
-  echo "Never deleting ${BRANCH}."
-  exit 3
-elif [ "${BRANCH}" = "master" ]; then
-  echo "Never deleting ${BRANCH}."
-  exit 3
-fi
+exit_if_branch_invalid $BRANCH
 
 SYSTEM_PROFILES_ROOT="/nix/var/nix/profiles/system-profiles"
 
-MATCHING_BUILDS=$(ls -d ${SYSTEM_PROFILES_ROOT}/${BRANCH}*)
-N_MATCHING_BUILDS=$(wc -w <<< $MATCHING_BUILDS)
+shopt -s nullglob
+MATCHING_BUILDS=()
+for link in ${SYSTEM_PROFILES_ROOT}/${BRANCH}*; do
+  [ -L "$link" ] || continue
+  MATCHING_BUILDS+=($link)
+done
+N_MATCHING_BUILDS=${#MATCHING_BUILDS[@]}
 
-echo "1. Will unlink $N_MATCHING_BUILDS matching builds."
 # TODO only use -D when explicitly forced
-# check for post merge build if -d (no force) is used
-echo "2. Will run \"git branch -D ${BRANCH}\""
+echo "1. Will run \"git branch -d ${BRANCH}\""
+echo "2. Will unlink $N_MATCHING_BUILDS matching builds."
 echo "3. Regenerate boot entries."
 
 read -p "Are you sure? " -n 1 -r
@@ -42,14 +70,24 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
-echo "Unlinking builds."
-for link in ${MATCHING_BUILDS[@]}; do
-  echo "Unlinking ${link}."
-  sudo unlink "$link"
-done
+# exit on nonzero status code
+set -e
 
 echo "Deleting branch."
-git branch -D ${BRANCH}
+git branch -d ${BRANCH}
 
-echo "Regenerating boot entries."
-sudo /run/current-system/bin/switch-to-configuration boot
+if [[ "$N_MATCHING_BUILDS" -gt 0 ]]; then
+
+  echo "Unlinking builds."
+  for link in ${MATCHING_BUILDS[@]}; do
+    echo "Unlinking ${link}."
+    sudo unlink "$link"
+  done
+
+  echo "Regenerating boot entries."
+  sudo /run/current-system/bin/switch-to-configuration boot
+
+else
+  # TODO actually check that there are no boot entries
+  echo "No profiles and boot entries."
+fi
