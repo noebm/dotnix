@@ -13,7 +13,7 @@
 in {
   imports = home-modules;
   home.packages = with pkgs; [
-    inputs.self.packages.${system}.nvim
+    inputs.dotnvim.packages.${system}.nvim
     firefox
     tree
     discord
