@@ -8,8 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
+    dotnvim = {
+      url = "github:noebm/dotnvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,7 +28,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    nixvim,
+    dotnvim,
     kinect-firmware-utils,
     sops-nix,
     ...
@@ -71,11 +71,5 @@
           ./modules/dirty.nix
         ];
     };
-
-    packages.${system}.nvim = let
-      nixvim' = nixvim.legacyPackages.${system};
-      config = import ./nvim.nix;
-    in
-      nixvim'.makeNixvim config;
   };
 }
