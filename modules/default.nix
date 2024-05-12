@@ -10,5 +10,6 @@
     ./development.nix
     ./nix-utils.nix
     ./gaming.nix
+    ./bash.nix
   ];
 }
