@@ -10,7 +10,8 @@
 
     dotnvim = {
       url = "github:noebm/dotnvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # should now follow unstable!
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     kinect-firmware-utils = {
