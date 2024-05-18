@@ -8,8 +8,8 @@
     source ${git}/share/bash-completion/completions/git-prompt.sh
 
     # Define color variables
-    DIM='\e[2m'
-    BOLD='\e[1m'
+    DIM='\[\e[2m\]'
+    BOLD='\[\e[1m\]'
     CYAN="\[''${BOLD}\e[38:5:14m\]"
     BLUE="\[''${BOLD}\e[38:5:12m\]"
     PURPLE="\[''${BOLD}\e[35m\]"
