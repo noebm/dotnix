@@ -9,6 +9,7 @@
     (import ./home-modules/git.nix {inherit pkgs config;})
     ./home-modules/emacs.nix
     ./home-modules/firefox.nix
+    ./home-modules/shell.nix
   ];
 in {
   imports = home-modules;
