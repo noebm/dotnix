@@ -24,6 +24,9 @@ in {
     "*.py?"
     "__pycache__/"
     ".venv/"
+    # direnv
+    ".direnv/"
+    ".envrc"
   ];
 
   programs.git.extraConfig = {
