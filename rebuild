@@ -4,6 +4,12 @@ NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
 pushd $NIXOS_CONFIG
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ $BRANCH == *"/"* ]]; then
+  echo "Cannot build nixos configurations with profile names containing '/'."
+  echo "Switch or rename branch."
+  exit 1
+fi
+
 sudo nixos-rebuild switch --profile-name ${BRANCH} --flake .
 
 popd
