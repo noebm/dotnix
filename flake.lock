@@ -52,11 +52,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1717234729,
-        "narHash": "sha256-/46vLd++g/GmW6ukybBdkzxgK35v1OsJtbi42qa9h0U=",
+        "lastModified": 1717713708,
+        "narHash": "sha256-nLENQhvI87SSG7A94Rn+pH8JwrhOucVRH7dX06lzON4=",
         "owner": "noebm",
         "repo": "dotnvim",
-        "rev": "fd393cc3dad44433802e5ad52e1185cd7c33da38",
+        "rev": "ba663fc666e1488693882c98aea4a9d07a9d5ec5",
         "type": "github"
       },
       "original": {
