@@ -119,12 +119,8 @@
     unzip
     zip
     lm_sensors
-    git
     alacritty
     alejandra
-    gcc
-    clang
-    glib.bin
     wl-clipboard
   ];
 
