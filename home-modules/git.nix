@@ -33,7 +33,12 @@ in {
     init = {
       defaultBranch = "main";
     };
+    diff.json.textconv = "jq --sort-keys .";
   };
+
+  programs.git.attributes = [
+    "*.json diff=json"
+  ];
 
   programs.git.delta.enable = true;
   programs.git.delta.options.features = "colibri";
