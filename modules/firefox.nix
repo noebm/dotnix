@@ -23,6 +23,10 @@ in {
         "browser.newtabpage.activity-stream.showSponsored" = lock-value false;
         "browser.newtabpage.activity-stream.system.showSponsored" = lock-value false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-value false;
+        # Disable Privacy-Preserving Attribution (PPA) for privacy
+        # PPA is enabled by default in Firefox 128
+        # See: https://news.ycombinator.com/item?id=40974112
+        "dom.private-attribution.submission.enabled" = lock-value false;
       };
 
       ExtensionSettings = {
