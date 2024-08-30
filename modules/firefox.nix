@@ -27,6 +27,9 @@ in {
         # PPA is enabled by default in Firefox 128
         # See: https://news.ycombinator.com/item?id=40974112
         "dom.private-attribution.submission.enabled" = lock-value false;
+        # Enable custom search engines
+        # See: https://superuser.com/questions/7327/how-to-add-a-custom-search-engine-to-firefox/1756774#1756774
+        "browser.urlbar.update2.engineAliasRefresh" = lock-value true;
       };
 
       ExtensionSettings = {
