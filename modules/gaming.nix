@@ -23,4 +23,9 @@
   # environment.systemPackages = with pkgs; [
   #   gamescope
   # ];
+
+  # minecraft
+  environment.systemPackages = [
+    pkgs.prismlauncher
+  ];
 }
