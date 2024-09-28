@@ -33,6 +33,11 @@ in {
     init = {
       defaultBranch = "main";
     };
+    # use `--update-refs` by default for stacked branches
+    # can be disabled per command via `--no-update-refs`
+    rebase = {
+      updaterefs = true;
+    };
     diff.json.textconv = "jq --sort-keys .";
   };
 
