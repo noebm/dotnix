@@ -38,6 +38,10 @@ in {
     rebase = {
       updateRefs = true;
     };
+
+    # “reuse recorded resolution” in merge conflicts
+    rerere.enabled = true;
+
     diff.json.textconv = "jq --sort-keys .";
   };
 
