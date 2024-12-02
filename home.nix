@@ -15,7 +15,6 @@ in {
   imports = home-modules;
   home.packages = with pkgs; [
     inputs.dotnvim.packages.${system}.nvim
-    firefox
     tree
     discord
     lutris

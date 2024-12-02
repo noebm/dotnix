@@ -66,8 +66,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
   # hardware.pulseaudio.enable = true;
   # hardware.pulseaudio.support32Bit = true;
   services.pipewire = {
@@ -125,9 +123,9 @@
   ];
 
   # opengl stuff for lutris / battlenet
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
     ];
