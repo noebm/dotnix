@@ -13,8 +13,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules
-    ../../wm
+    ../../modules/nixos
+    ../../modules/nixos/wm
   ];
 
   fileSystems."/run/media/${user}/SSD Data" = {

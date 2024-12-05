@@ -58,7 +58,7 @@
     ];
     secretConfig = [
       sops-nix.nixosModules.sops
-      ./modules/sops.nix
+      ./modules/nixos/sops.nix
     ];
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
@@ -72,7 +72,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           kinect-firmware-utils.nixosModules.${system}.default
           ./hosts/${hostname}
-          ./modules/dirty.nix
+          ./modules/nixos/dirty.nix
         ];
     };
   };

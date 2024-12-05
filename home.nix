@@ -6,10 +6,10 @@
   ...
 }: let
   home-modules = [
-    (import ./home-modules/git.nix {inherit pkgs config;})
-    ./home-modules/emacs.nix
-    ./home-modules/firefox.nix
-    ./home-modules/shell.nix
+    (import ./modules/home/git.nix {inherit pkgs config;})
+    ./modules/home/emacs.nix
+    ./modules/home/firefox.nix
+    ./modules/home/shell.nix
   ];
 in {
   imports = home-modules;
