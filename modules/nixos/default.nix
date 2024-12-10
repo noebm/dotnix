@@ -11,5 +11,6 @@
     ./nix-utils.nix
     ./gaming.nix
     ./bash.nix
+    ./ollama.nix
   ];
 }
