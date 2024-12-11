@@ -27,6 +27,7 @@ in {
     # direnv
     ".direnv/"
     ".envrc"
+    ".env"
   ];
 
   programs.git.extraConfig = {
