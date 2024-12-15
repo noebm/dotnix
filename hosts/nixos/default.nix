@@ -31,6 +31,10 @@
 
   boot.initrd.kernelModules = ["amdgpu"];
 
+  # use tmpfs for /tmp
+  # this is disabled by default because it can cause (large) builds to fail
+  boot.tmp.useTmpfs = true;
+
   networking.hostName = hostname;
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
