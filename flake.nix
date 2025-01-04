@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zwift = {
+      url = "github:netbrain/zwift";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     dotnvim = {
       url = "github:noebm/dotnvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -70,6 +75,8 @@
         ++ [
           nixos-hardware.nixosModules.common-pc-ssd
           kinect-firmware-utils.nixosModules.${system}.default
+          # check for x86_64-linux?
+          inputs.zwift.nixosModules.default
           ./hosts/${hostname}
           ./modules/nixos/dirty.nix
         ];

@@ -225,7 +225,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "zwift": "zwift"
       }
     },
     "sops-nix": {
@@ -285,6 +286,26 @@
       "original": {
         "owner": "noebm",
         "repo": "wix-extract",
+        "type": "github"
+      }
+    },
+    "zwift": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734895889,
+        "narHash": "sha256-xoDVE6j1Gjt+TDtRI4MSZr5o2gmGAv+isH7F0AhTodk=",
+        "owner": "netbrain",
+        "repo": "zwift",
+        "rev": "4458bc6219391ce6484c18ec511302c94465aed2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "netbrain",
+        "repo": "zwift",
         "type": "github"
       }
     }
