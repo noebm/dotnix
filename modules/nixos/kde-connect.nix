@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   networking.firewall = {
-    enable = true;
     allowedTCPPortRanges = [
       {
         from = 1714;
