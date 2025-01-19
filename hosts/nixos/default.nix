@@ -130,13 +130,8 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
   };
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
