@@ -39,17 +39,13 @@
     hostname = "nixos";
     system = "x86_64-linux";
     user = "noebm";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
     homeConfig = [
       home-manager.nixosModules.home-manager
       ({
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
         home-manager.backupFileExtension = "hm-backup";
-        home-manager.extraSpecialArgs = { inherit pkgs inputs system; };
+        home-manager.extraSpecialArgs = { inherit inputs system; };
 
         home-manager.users.${user} = import ./home.nix;
       })
