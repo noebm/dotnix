@@ -45,20 +45,14 @@
     };
     homeConfig = [
       home-manager.nixosModules.home-manager
-      # sops-nix.homeManagerModules.sops
-      ({config, ...}: {
+      ({
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
         home-manager.backupFileExtension = "hm-backup";
+        home-manager.extraSpecialArgs = { inherit user pkgs inputs system; };
 
-        home-manager.users.${user} = import ./home.nix {
-          inherit pkgs config inputs system;
-        };
+        home-manager.users.${user} = import ./home.nix;
       })
-    ];
-    secretConfig = [
-      inputs.sops-nix.nixosModules.sops
-      ./modules/nixos/sops.nix
     ];
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
@@ -67,7 +61,6 @@
       };
       modules =
         homeConfig
-        ++ secretConfig
         ++ [
           ./hosts/${hostname}
           ./modules/nixos/dirty.nix
