@@ -47,6 +47,10 @@
         home-manager.backupFileExtension = "hm-backup";
         home-manager.extraSpecialArgs = { inherit inputs system; };
 
+        users.users.${user} = {
+          isNormalUser = true;
+          extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+        };
         home-manager.users.${user} = import ./home.nix;
       })
     ];
