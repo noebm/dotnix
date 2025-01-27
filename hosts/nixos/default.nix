@@ -8,6 +8,7 @@
   inputs,
   hostname,
   user,
+  system,
   ...
 }: {
   imports = [
@@ -15,6 +16,10 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ../../modules/nixos/wm
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.kinect-firmware-utils.nixosModules.${system}.default
+    # check for x86_64-linux?
+    inputs.zwift.nixosModules.default
   ];
 
   fileSystems."/run/media/${user}/SSD Data" = {

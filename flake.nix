@@ -33,11 +33,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixos-hardware,
     home-manager,
-    dotnvim,
-    kinect-firmware-utils,
-    sops-nix,
     ...
   } @ inputs: let
     hostname = "nixos";
@@ -61,7 +57,7 @@
       })
     ];
     secretConfig = [
-      sops-nix.nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
       ./modules/nixos/sops.nix
     ];
   in {
@@ -73,10 +69,6 @@
         homeConfig
         ++ secretConfig
         ++ [
-          nixos-hardware.nixosModules.common-pc-ssd
-          kinect-firmware-utils.nixosModules.${system}.default
-          # check for x86_64-linux?
-          inputs.zwift.nixosModules.default
           ./hosts/${hostname}
           ./modules/nixos/dirty.nix
         ];
