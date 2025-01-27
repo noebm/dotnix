@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
-pushd $NIXOS_CONFIG
+pushd "$NIXOS_CONFIG" || exit
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [[ $BRANCH == *"/"* ]]; then
@@ -10,8 +10,8 @@ if [[ $BRANCH == *"/"* ]]; then
   exit 1
 fi
 
-sudo nixos-rebuild switch --profile-name ${BRANCH} --flake .
+sudo nixos-rebuild switch --profile-name "${BRANCH}" --flake .
 
-popd
+popd || exit
 
 
