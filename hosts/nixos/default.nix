@@ -7,7 +7,6 @@
   pkgs,
   inputs,
   hostname,
-  user,
   system,
   ...
 }: {
@@ -22,7 +21,7 @@
     inputs.zwift.nixosModules.default
   ];
 
-  fileSystems."/run/media/${user}/SSD Data" = {
+  fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/ed32536e-87d6-4403-97bc-64128bdd1370";
     fsType = "ext4";
   };
