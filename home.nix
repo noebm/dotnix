@@ -3,8 +3,9 @@
   inputs,
   system,
   ...
-}: let
-  home-modules = [
+}: {
+
+  imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./modules/home/sops.nix
     ./modules/home/git.nix
@@ -12,8 +13,7 @@
     ./modules/home/firefox.nix
     ./modules/home/shell.nix
   ];
-in {
-  imports = home-modules;
+
   home.packages = with pkgs; [
     inputs.dotnvim.packages.${system}.nvim
     tree
