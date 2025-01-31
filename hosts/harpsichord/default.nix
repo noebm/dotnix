@@ -14,12 +14,18 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    # check for x86_64-linux?
+    inputs.kinect-firmware-utils.nixosModules.${system}.default
+    inputs.zwift.nixosModules.default
     ../../modules/nixos
     ../../modules/nixos/wm
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
-    inputs.kinect-firmware-utils.nixosModules.${system}.default
-    # check for x86_64-linux?
-    inputs.zwift.nixosModules.default
+    ../../modules/nixos/kde-connect.nix
+    ../../modules/nixos/ps5-controller.nix
+    ../../modules/nixos/printer.nix
+    ../../modules/nixos/logitech.nix
+    ../../modules/nixos/gaming.nix
+    ../../modules/nixos/ollama.nix
   ];
 
   # enable `nix flake ...` commands
