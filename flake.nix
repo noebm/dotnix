@@ -30,41 +30,47 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    hostname = "nixos";
-    system = "x86_64-linux";
-    user = "noebm";
-    homeConfig = [
-      home-manager.nixosModules.home-manager
-      ({
-        home-manager.useUserPackages = true;
-        home-manager.useGlobalPkgs = true;
-        home-manager.backupFileExtension = "hm-backup";
-        home-manager.extraSpecialArgs = { inherit inputs system; };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      hostname = "nixos";
+      system = "x86_64-linux";
+      user = "noebm";
+      homeConfig = [
+        home-manager.nixosModules.home-manager
+        ({
+          home-manager.useUserPackages = true;
+          home-manager.useGlobalPkgs = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.extraSpecialArgs = { inherit inputs system; };
 
-        users.users.${user} = {
-          isNormalUser = true;
-          extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+          users.users.${user} = {
+            isNormalUser = true;
+            extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+          };
+          home-manager.users.${user} = import ./home.nix;
+        })
+      ];
+    in
+    {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit
+            self
+            inputs
+            system
+            hostname
+            ;
         };
-        home-manager.users.${user} = import ./home.nix;
-      })
-    ];
-  in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit self inputs system hostname;
-      };
-      modules =
-        homeConfig
-        ++ [
+        modules = homeConfig ++ [
           ./hosts/${hostname}
           ./modules/nixos/dirty.nix
         ];
+      };
     };
-  };
 }
