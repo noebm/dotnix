@@ -28,12 +28,6 @@
     ../../modules/nixos/ollama.nix
   ];
 
-  # enable `nix flake ...` commands
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -120,13 +114,7 @@
   environment.systemPackages = with pkgs; [
     glow
     wget
-    curl
-    unzip
-    zip
     lm_sensors
-    alacritty
-    alejandra
-    wl-clipboard
   ];
 
   # opengl stuff for lutris / battlenet
