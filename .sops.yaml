@@ -1,9 +1,7 @@
 keys:
   - &user_noebm age1fjsgndtac7zkappdqtgc8hyaylafhvj234rgf48x2g58278d09hsg0ssnz
-  - &host_nixos age109pa5kzhw0gw8ghvlefucre83g44x8tw3nvzrea4ryj4mg3uv35qdhwywd
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
         - *user_noebm
-        - *host_nixos
