@@ -56,17 +56,11 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  # Allow unfree packages (currently only used for discord)
-  nixpkgs.config.allowUnfree = true;
 
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 

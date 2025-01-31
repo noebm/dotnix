@@ -8,6 +8,11 @@
     ./bash.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
