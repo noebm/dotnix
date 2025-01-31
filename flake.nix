@@ -38,7 +38,7 @@
       ...
     }@inputs:
     let
-      hostname = "nixos";
+      hostname = "harpsichord";
       system = "x86_64-linux";
       user = "noebm";
       homeConfig = [
