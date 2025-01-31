@@ -38,7 +38,6 @@
       ...
     }@inputs:
     let
-      hostname = "harpsichord";
       system = "x86_64-linux";
       user = "noebm";
       homeConfig = [
@@ -56,21 +55,26 @@
           home-manager.users.${user} = import ./home.nix;
         })
       ];
+      mkHosts = builtins.mapAttrs (hostname: config: config hostname);
     in
     {
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            self
-            inputs
-            system
-            hostname
-            ;
-        };
-        modules = homeConfig ++ [
-          ./hosts/${hostname}
-          ./modules/nixos/dirty.nix
-        ];
+      nixosConfigurations = mkHosts {
+        harpsichord =
+          hostname:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit
+                self
+                inputs
+                system
+                hostname
+                ;
+            };
+            modules = homeConfig ++ [
+              ./hosts/${hostname}
+              ./modules/nixos/dirty.nix
+            ];
+          };
       };
     };
 }
