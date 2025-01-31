@@ -9,7 +9,8 @@
   hostname,
   system,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -22,13 +23,16 @@
   ];
 
   # enable `nix flake ...` commands
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # use tmpfs for /tmp
   # this is disabled by default because it can cause (large) builds to fail
@@ -124,7 +128,7 @@
     enable = true;
     enable32Bit = true;
   };
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -146,8 +150,8 @@
   # networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [8000];
-    allowedUDPPorts = [8000];
+    allowedTCPPorts = [ 8000 ];
+    allowedUDPPorts = [ 8000 ];
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
