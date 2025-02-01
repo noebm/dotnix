@@ -93,6 +93,23 @@
               ./modules/nixos/dirty.nix
             ];
           };
+
+        tambourine =
+          hostname:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit
+                self
+                inputs
+                system
+                hostname
+                ;
+            };
+            modules = homeConfig ++ [
+              ./hosts/${hostname}
+              ./modules/nixos/dirty.nix
+            ];
+          };
       };
     };
 }
