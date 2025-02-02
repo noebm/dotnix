@@ -9,7 +9,6 @@
     inputs.sops-nix.homeManagerModules.sops
     ./modules/home/sops.nix
     ./modules/home/git.nix
-    ./modules/home/emacs.nix
     ./modules/home/firefox.nix
     ./modules/home/shell.nix
   ];
