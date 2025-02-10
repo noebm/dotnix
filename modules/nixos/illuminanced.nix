@@ -54,16 +54,27 @@ let
     #   illuminance_1 = 7100;
     #   light_1 = 10;
     # };
-    lights =
+    light =
       with lib;
-      {
+      let
         points_count = builtins.length cfg.settings.light;
-      }
-      // builtins.listToAttrs (
-        lists.imap0 (
+        indexed_light_levels = lists.imap0 (
           idx: attrsets.mapAttrs' (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
-        ) cfg.settings.light
-      );
+        ) cfg.settings.light;
+      in
+      {
+        inherit points_count;
+      }
+      // builtins.listToAttrs indexed_light_levels;
+
+    # {
+    #   points_count = builtins.length cfg.settings.light;
+    # }
+    # // builtins.listToAttrs (
+    #   lists.imap0 (
+    #     idx: attrsets.mapAttrs' (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
+    #   ) cfg.settings.light
+    # );
   };
 in
 {
