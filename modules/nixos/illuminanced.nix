@@ -45,36 +45,17 @@ let
       covariance = 10;
     };
 
-    # light = {
-    #   points_count = 2;
-
-    #   illuminance_0 = 0;
-    #   light_0 = 0;
-
-    #   illuminance_1 = 7100;
-    #   light_1 = 10;
-    # };
     light =
       with lib;
       let
-        points_count = builtins.length cfg.settings.light;
         indexed_light_levels = lists.imap0 (
           idx: attrsets.mapAttrsToList (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
         ) cfg.settings.light;
       in
       {
-        inherit points_count;
+        points_count = builtins.length cfg.settings.light;
       }
       // builtins.listToAttrs (lists.concatLists indexed_light_levels);
-
-    # {
-    #   points_count = builtins.length cfg.settings.light;
-    # }
-    # // builtins.listToAttrs (
-    #   lists.imap0 (
-    #     idx: attrsets.mapAttrs' (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
-    #   ) cfg.settings.light
-    # );
   };
 in
 {
