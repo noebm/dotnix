@@ -59,17 +59,17 @@ in
       settings = {
         backlight_file = lib.mkOption {
           description = "sysfs path of the backlight brightness.";
-          type = lib.types.string;
+          type = lib.types.str;
         };
 
         max_backlight_file = lib.mkOption {
           description = "sysfs path of the backlight max brightness.";
-          type = lib.types.string;
+          type = lib.types.str;
         };
 
         illuminance_file = lib.mkOption {
           description = "sysfs path of the raw illuminance.";
-          type = lib.types.string;
+          type = lib.types.str;
         };
 
         kalman = {
