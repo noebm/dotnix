@@ -6,7 +6,14 @@
     ./development.nix
     ./nix-utils.nix
     ./bash.nix
+    ./illuminanced.nix
   ];
+
+  nixpkgs.overlays =
+    let
+      pkgOverlay = import ../../pkgs/overlay.nix;
+    in
+    [ pkgOverlay ];
 
   nixpkgs.config.allowUnfree = true;
 

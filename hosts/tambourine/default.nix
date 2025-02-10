@@ -16,7 +16,6 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ../../modules/nixos
-    ../../modules/nixos/illuminanced.nix
   ];
 
   # framework 13 - amd 7040 configuration
