@@ -12,6 +12,7 @@ rustPlatform.buildRustPackage rec {
     owner = "mikhail-m1";
     repo = "illuminanced";
     rev = "ee95f97dc1ed197abe3a7c4f3ad45121a077d3eb";
+    hash = "sha256-dilApolbxgl//2YVbd4ITYVNwfCQQ8LPayqmmW5Jhv8=";
   };
 
   cargoLock = {
