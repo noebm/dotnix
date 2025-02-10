@@ -1,6 +1,6 @@
 {
   lib,
-  fetchFromGithub,
+  fetchFromGitHub,
   rustPlatform,
 }:
 
@@ -8,7 +8,7 @@ rustPlatform.buildRustPackage rec {
   pname = "illuminanced";
   version = "0.1.0";
 
-  src = fetchFromGithub {
+  src = fetchFromGitHub {
     url = "https://github.com/mikhail-m1/illuminanced";
     rev = "ee95f97dc1ed197abe3a7c4f3ad45121a077d3eb";
   };
