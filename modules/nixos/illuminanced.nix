@@ -65,7 +65,7 @@ let
       {
         inherit points_count;
       }
-      // builtins.listToAttrs indexed_light_levels;
+      // builtins.listToAttrs (flatten indexed_light_levels);
 
     # {
     #   points_count = builtins.length cfg.settings.light;
