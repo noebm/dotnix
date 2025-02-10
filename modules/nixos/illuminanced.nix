@@ -19,7 +19,7 @@ let
     daemonize.log_level = cfg.settings.log_level;
 
     general = {
-      check_period_in_seconds = 1;
+      check_period_in_seconds = cfg.settings.update_interval;
       light_steps = 10;
       step_barrier = 0.1;
       min_backlight = 20;
@@ -67,6 +67,12 @@ in
             "TRACE"
           ];
           default = "INFO";
+        };
+
+        update_interval = lib.mkOption {
+          description = "Update interval in seconds.";
+          type = lib.types.int;
+          default = 1;
         };
 
         backlight_file = lib.mkOption {
