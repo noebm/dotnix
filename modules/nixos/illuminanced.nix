@@ -60,16 +60,6 @@ let
 in
 {
   options = {
-    programs.illuminanced = {
-      enable = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
-        description = ''
-          Whether to configure system to use illuminanced.
-        '';
-      };
-    };
-
     services.illuminanced = {
       enable = lib.mkOption {
         default = false;
@@ -149,10 +139,7 @@ in
     };
   };
 
-  config = lib.mkIf (config.programs.illuminanced.enable || config.services.illuminanced.enable) {
-    environment.systemPackages = lib.mkIf config.programs.illuminanced.enable [
-      pkgs.illuminanced
-    ];
+  config = lib.mkIf config.services.illuminanced.enable {
 
     # Service based on `illuminanced.service` in github repo.
     systemd.services = lib.mkIf config.services.illuminanced.enable {
