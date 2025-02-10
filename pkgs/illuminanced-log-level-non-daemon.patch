@@ -1,0 +1,13 @@
+diff --git a/src/main.rs b/src/main.rs
+index 56c21d5..cabcc4e 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -254,7 +254,7 @@ fn run() -> Result<(), ErrorCode> {
+ 
+     if matches.opt_present("d") {
+         let _ = TermLogger::init(
+-            LevelFilter::Debug,
++            config.log_level(),
+             LoggerConfig::default(),
+             TerminalMode::Stdout,
+             ColorChoice::Auto,

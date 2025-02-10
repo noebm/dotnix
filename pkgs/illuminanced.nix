@@ -19,6 +19,8 @@ rustPlatform.buildRustPackage rec {
     lockFile = "${src}/Cargo.lock";
   };
 
+  patches = [ ./illuminanced-log-level-non-daemon.patch ];
+
   meta = {
     description = "Ambient Light Sensor Daemon for Linux";
     homepage = "https://github.com/mikhail-m1/illuminanced";
