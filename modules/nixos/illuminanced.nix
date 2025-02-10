@@ -55,20 +55,13 @@ let
     #   light_1 = 10;
     # };
     lights =
-      with lib.lists;
-      with lib.attrsets;
+      with lib;
       {
         points_count = builtins.length cfg.settings.light;
       }
       // builtins.listToAttrs (
-        imap0 (
-          idx:
-          mapAttrs' (
-            name: value: {
-              name = name + "_" + builtins.toString idx;
-              value = value;
-            }
-          )
+        lists.imap0 (
+          idx: attrsets.mapAttrs' (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
         ) cfg.settings.light
       );
   };
