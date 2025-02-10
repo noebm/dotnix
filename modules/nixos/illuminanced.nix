@@ -45,11 +45,7 @@ let
 
     };
 
-    kalman = {
-      q = 1;
-      r = 20;
-      covariance = 10;
-    };
+    kalman = cfg.settings.kalman;
 
     light =
       with lib;
@@ -76,6 +72,20 @@ in
       };
 
       settings = {
+        kalman = {
+          q = lib.mkOption {
+            type = lib.types.float;
+            default = 1;
+          };
+          r = lib.mkOption {
+            type = lib.types.float;
+            default = 20;
+          };
+          covariance = lib.mkOption {
+            type = lib.types.float;
+            default = 10;
+          };
+        };
         device = lib.mkOption {
           type = lib.types.enum [ "frameworks13" ];
           description = ''
