@@ -56,9 +56,7 @@ let
         points_count = builtins.length cfg.settings.light;
       }
       // builtins.listToAttrs (
-        imap0 (
-          idx: attrs: mapAttrs' (name: value: nameValuePair (name + "_${idx}") value) attrs
-        ) cfg.settings.light
+        imap0 (idx: mapAttrs' (name: nameValuePair (name + "_${idx}"))) cfg.settings.light
       );
   };
 in
