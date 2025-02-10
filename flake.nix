@@ -40,6 +40,9 @@
     let
       system = "x86_64-linux";
       user = "noebm";
+
+      pkgOverlay = import ./pkgs/overlay.nix;
+
       homeConfig = [
         home-manager.nixosModules.home-manager
         ({
@@ -106,6 +109,7 @@
                 ;
             };
             modules = homeConfig ++ [
+              ({ nixpkgs.overlays = [ pkgOverlay ]; })
               ./hosts/${hostname}
               ./modules/nixos/dirty.nix
             ];
