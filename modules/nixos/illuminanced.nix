@@ -50,7 +50,8 @@ let
     };
 
     light =
-      with lib.lists lib.attrsets;
+      with lib.lists;
+      with lib.attrsets;
       {
         points_count = builtins.length cfg.settings.light;
       }
