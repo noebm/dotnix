@@ -168,7 +168,6 @@ in
     systemd.services = lib.mkIf config.services.illuminanced.enable {
       illuminanced = {
         description = "Ambient light monitoring Service";
-        requires = [ "syslog.socket" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           # Type = "forking";
