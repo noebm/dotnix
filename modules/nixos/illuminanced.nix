@@ -5,6 +5,12 @@
   ...
 }:
 
+# Service based on `illuminanced.service` in illuminanced github repository.
+#
+# Notes:
+# To bypass issues with global PID files we use `--no-fork` and
+# use a patched version to correctly apply log levels.
+
 let
   cfg = config.services.illuminanced;
 
@@ -70,14 +76,6 @@ in
       };
 
       settings = {
-        # PIDFile = lib.mkOption {
-        #   default = /run/illuminanced.pid;
-        #   type = lib.types.path;
-        #   description = ''
-        #     Location of the pid file.
-        #   '';
-        # };
-
         device = lib.mkOption {
           type = lib.types.enum [ "frameworks13" ];
           description = ''
@@ -141,13 +139,11 @@ in
 
   config = lib.mkIf config.services.illuminanced.enable {
 
-    # Service based on `illuminanced.service` in github repo.
     systemd.services = lib.mkIf config.services.illuminanced.enable {
       illuminanced = {
         description = "Ambient light monitoring Service";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          # Type = "forking";
           Restart = "on-failure";
           ExecStart = "${pkgs.illuminanced}/bin/illuminanced --config ${settingsFile} --no-fork";
         };
