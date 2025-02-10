@@ -10,11 +10,7 @@ let
 
   settingsFormat = pkgs.formats.toml { };
   settingsFile = settingsFormat.generate "illuminanced.toml" {
-    daemonize = {
-      log_to = "syslog";
-      log_level = "TRACE";
-      # pid_file = cfg.settings.PIDFile;
-    };
+    daemonize.log_level = "ERROR";
 
     general = {
       check_period_in_seconds = 1;
