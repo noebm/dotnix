@@ -116,7 +116,30 @@ in
             lib.types.listOf entries;
 
           default = [
-
+            {
+              illuminance = 0;
+              light = 0;
+            }
+            {
+              illuminance = 20;
+              light = 1;
+            }
+            {
+              illuminance = 300;
+              light = 3;
+            }
+            {
+              illuminance = 700;
+              light = 4;
+            }
+            {
+              illuminance = 1100;
+              light = 5;
+            }
+            {
+              illuminance = 7100;
+              light = 10;
+            }
           ];
 
           description = ''
