@@ -16,6 +16,7 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ../../modules/nixos
+    ../../modules/nixos/illuminanced.nix
   ];
 
   # framework 13 - amd 7040 configuration
@@ -35,9 +36,7 @@
 
   hardware.bluetooth.enable = true;
 
-  environment.systemPackages = [
-    pkgs.illuminanced
-  ];
+  programs.illuminanced.enable = true;
 
   fonts.packages = with pkgs; [
     nerdfonts
