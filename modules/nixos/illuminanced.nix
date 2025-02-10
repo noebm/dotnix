@@ -13,7 +13,7 @@ let
     daemonize = {
       log_to = "syslog";
       log_level = "TRACE";
-      pid_file = cfg.settings.PIDFile;
+      # pid_file = cfg.settings.PIDFile;
     };
 
     general = {
@@ -83,13 +83,13 @@ in
       };
 
       settings = {
-        PIDFile = lib.mkOption {
-          default = /run/illuminanced.pid;
-          type = lib.types.path;
-          description = ''
-            Location of the pid file.
-          '';
-        };
+        # PIDFile = lib.mkOption {
+        #   default = /run/illuminanced.pid;
+        #   type = lib.types.path;
+        #   description = ''
+        #     Location of the pid file.
+        #   '';
+        # };
 
         device = lib.mkOption {
           type = lib.types.enum [ "frameworks13" ];
@@ -141,10 +141,9 @@ in
         requires = [ "syslog.socket" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          Type = "forking";
+          # Type = "forking";
           Restart = "on-failure";
-          ExecStart = "${pkgs.illuminanced} --config ${settingsFile}";
-          PIDFfile = config.services.illuminanced.PIDFile;
+          ExecStart = "${pkgs.illuminanced} --config ${settingsFile} --no-fork";
         };
       };
 
