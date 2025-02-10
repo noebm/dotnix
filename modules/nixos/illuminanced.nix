@@ -57,7 +57,7 @@ let
       }
       // builtins.listToAttrs (
         imap0 (
-          idx: attrs: mapAttrs' (name: value: nameValuePair (name + "_" + idx) value) attrs
+          idx: attrs: mapAttrs' (name: value: nameValuePair (name + "_${idx}") value) attrs
         ) cfg.settings.light
       );
   };
