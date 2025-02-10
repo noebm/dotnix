@@ -24,5 +24,6 @@
     zip
     alacritty
     wl-clipboard
+    lm_sensors
   ];
 }

@@ -108,7 +108,6 @@
   environment.systemPackages = with pkgs; [
     glow
     wget
-    lm_sensors
   ];
 
   # opengl stuff for lutris / battlenet
