@@ -13,7 +13,7 @@ let
     daemonize = {
       log_to = "syslog";
       log_level = "TRACE";
-      pid_file = cfg.PIDFile;
+      pid_file = cfg.settings.PIDFile;
     };
 
     general = {
@@ -143,7 +143,7 @@ in
         serviceConfig = {
           Type = "forking";
           Restart = "on-failure";
-          ExecStart = "${pkgs.illuminanced} --pid ${config.services.illuminanced.PIDFile} --config ${settingsFile}";
+          ExecStart = "${pkgs.illuminanced} --config ${settingsFile}";
           PIDFfile = config.services.illuminanced.PIDFile;
         };
       };
