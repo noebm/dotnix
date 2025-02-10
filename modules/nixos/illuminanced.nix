@@ -16,7 +16,7 @@ let
 
   settingsFormat = pkgs.formats.toml { };
   settingsFile = settingsFormat.generate "illuminanced.toml" {
-    daemonize.log_level = "ERROR";
+    daemonize.log_level = cfg.settings.log_level;
 
     general = {
       check_period_in_seconds = 1;
@@ -57,6 +57,18 @@ in
       };
 
       settings = {
+        log_level = lib.mkOption {
+          type = lib.types.enum [
+            "OFF"
+            "ERROR"
+            "WARN"
+            "INFO"
+            "DEBUG"
+            "TRACE"
+          ];
+          default = "INFO";
+        };
+
         backlight_file = lib.mkOption {
           description = "sysfs path of the backlight brightness.";
           type = lib.types.str;
