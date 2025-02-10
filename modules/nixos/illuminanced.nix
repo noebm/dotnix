@@ -172,7 +172,7 @@ in
         serviceConfig = {
           # Type = "forking";
           Restart = "on-failure";
-          ExecStart = "${pkgs.illuminanced} --config ${settingsFile} --no-fork";
+          ExecStart = "${pkgs.illuminanced}/bin/illuminanced --config ${settingsFile} --no-fork";
         };
       };
 
