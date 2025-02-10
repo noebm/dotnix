@@ -35,6 +35,10 @@
 
   hardware.bluetooth.enable = true;
 
+  environment.systemPackages = [
+    pkgs.illuminanced
+  ];
+
   fonts.packages = with pkgs; [
     nerdfonts
   ];
