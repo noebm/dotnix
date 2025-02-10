@@ -41,6 +41,7 @@
       max_backlight_file = "/sys/class/backlight/amdgpu_bl1/max_brightness";
       backlight_file = "/sys/class/backlight/amdgpu_bl1/brightness";
       illuminance_file = "/sys/bus/iio/devices/iio:device0/in_illuminance_raw";
+      update_interval = 5;
     };
     # settings.device = "frameworks13";
     #  max_backlight_file =
