@@ -25,24 +25,9 @@ let
       min_backlight = 20;
       enable_max_brightness_mode = true;
 
-      max_backlight_file =
-        if cfg.settings.device == "frameworks13" then
-          "/sys/class/backlight/amdgpu_bl1/max_brightness"
-        else
-          throw "Unknown device!";
-
-      backlight_file =
-        if cfg.settings.device == "frameworks13" then
-          "/sys/class/backlight/amdgpu_bl1/brightness"
-        else
-          throw "Unknown device!";
-
-      illuminance_file =
-        if cfg.settings.device == "frameworks13" then
-          "/sys/bus/iio/devices/iio:device0/in_illuminance_raw"
-        else
-          throw "Unknown device!";
-
+      backlight_file = cfg.settings.backlight_file;
+      max_backlight_file = cfg.settings.max_backlight_file;
+      illuminance_file = cfg.settings.illuminance_file;
     };
 
     kalman = cfg.settings.kalman;
@@ -72,6 +57,21 @@ in
       };
 
       settings = {
+        backlight_file = lib.mkOption {
+          description = "sysfs path of the backlight brightness.";
+          type = lib.types.string;
+        };
+
+        max_backlight_file = lib.mkOption {
+          description = "sysfs path of the backlight max brightness.";
+          type = lib.types.string;
+        };
+
+        illuminance_file = lib.mkOption {
+          description = "sysfs path of the raw illuminance.";
+          type = lib.types.string;
+        };
+
         kalman = {
           q = lib.mkOption {
             type = lib.types.float;
@@ -86,12 +86,12 @@ in
             default = 10;
           };
         };
-        device = lib.mkOption {
-          type = lib.types.enum [ "frameworks13" ];
-          description = ''
-            Device name used to select sysfs interfaces.
-          '';
-        };
+        # device = lib.mkOption {
+        #   type = lib.types.enum [ "frameworks13" ];
+        #   description = ''
+        #     Device name used to select sysfs interfaces.
+        #   '';
+        # };
 
         light = lib.mkOption {
           type =

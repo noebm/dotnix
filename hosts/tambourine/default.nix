@@ -37,7 +37,29 @@
 
   services.illuminanced = {
     enable = true;
-    settings.device = "frameworks13";
+    settings = {
+      max_backlight_file = "/sys/class/backlight/amdgpu_bl1/max_brightness";
+      backlight_file = "/sys/class/backlight/amdgpu_bl1/brightness";
+      illuminance_file = "/sys/bus/iio/devices/iio:device0/in_illuminance_raw";
+    };
+    # settings.device = "frameworks13";
+    #  max_backlight_file =
+    #    if cfg.settings.device == "frameworks13" then
+    #      "/sys/class/backlight/amdgpu_bl1/max_brightness"
+    #    else
+    #      throw "Unknown device!";
+
+    #  backlight_file =
+    #    if cfg.settings.device == "frameworks13" then
+    #      "/sys/class/backlight/amdgpu_bl1/brightness"
+    #    else
+    #      throw "Unknown device!";
+
+    #  illuminance_file =
+    #    if cfg.settings.device == "frameworks13" then
+    #      "/sys/bus/iio/devices/iio:device0/in_illuminance_raw"
+    #    else
+    #      throw "Unknown device!";
   };
 
   fonts.packages = with pkgs; [
