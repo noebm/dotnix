@@ -59,13 +59,13 @@ let
       let
         points_count = builtins.length cfg.settings.light;
         indexed_light_levels = lists.imap0 (
-          idx: attrsets.mapAttrs' (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
+          idx: attrsets.mapAttrsToList (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
         ) cfg.settings.light;
       in
       {
         inherit points_count;
       }
-      // builtins.listToAttrs (flatten indexed_light_levels);
+      // builtins.listToAttrs (lists.concatLists indexed_light_levels);
 
     # {
     #   points_count = builtins.length cfg.settings.light;
