@@ -35,7 +35,10 @@
 
   hardware.bluetooth.enable = true;
 
-  programs.illuminanced.enable = true;
+  services.illuminanced = {
+    enable = true;
+    settings.device = "frameworks13";
+  };
 
   fonts.packages = with pkgs; [
     nerdfonts
