@@ -49,15 +49,23 @@ let
       covariance = 10;
     };
 
-    light =
-      with lib.lists;
-      with lib.attrsets;
-      {
-        points_count = builtins.length cfg.settings.light;
-      }
-      // builtins.listToAttrs (
-        imap0 (idx: mapAttrs' (name: nameValuePair (name + "_" + builtins.toString idx))) cfg.settings.light
-      );
+    light = {
+      points_count = 2;
+
+      illuminance_0 = 0;
+      light_0 = 0;
+
+      illuminance_1 = 7100;
+      light_1 = 10;
+    };
+    # with lib.lists;
+    # with lib.attrsets;
+    # {
+    #   points_count = builtins.length cfg.settings.light;
+    # }
+    # // builtins.listToAttrs (
+    #   imap0 (idx: mapAttrs' (name: nameValuePair (name + "_" + builtins.toString idx))) cfg.settings.light
+    # );
   };
 in
 {
