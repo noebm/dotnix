@@ -170,7 +170,7 @@ in
             // builtins.listToAttrs (lists.concatLists indexed_light_levels);
         };
       in
-      lib.mkIf config.services.illuminanced.enable {
+      {
         illuminanced = {
           description = "Ambient light monitoring Service";
           wantedBy = [ "multi-user.target" ];
