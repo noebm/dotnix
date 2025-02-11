@@ -13,37 +13,8 @@
 
 let
   cfg = config.services.illuminanced;
-
   settingsFormat = pkgs.formats.toml { };
-  settingsFile = settingsFormat.generate "illuminanced.toml" {
-    daemonize.log_level = cfg.settings.log_level;
 
-    general = {
-      check_period_in_seconds = cfg.settings.update_interval;
-      light_steps = 10;
-      step_barrier = 0.1;
-      min_backlight = 20;
-      enable_max_brightness_mode = true;
-
-      backlight_file = cfg.settings.backlight_file;
-      max_backlight_file = cfg.settings.max_backlight_file;
-      illuminance_file = cfg.settings.illuminance_file;
-    };
-
-    kalman = cfg.settings.kalman;
-
-    light =
-      with lib;
-      let
-        indexed_light_levels = lists.imap0 (
-          idx: attrsets.mapAttrsToList (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
-        ) cfg.settings.light;
-      in
-      {
-        points_count = builtins.length cfg.settings.light;
-      }
-      // builtins.listToAttrs (lists.concatLists indexed_light_levels);
-  };
 in
 {
   options = {
@@ -167,16 +138,48 @@ in
 
   config = lib.mkIf config.services.illuminanced.enable {
 
-    systemd.services = lib.mkIf config.services.illuminanced.enable {
-      illuminanced = {
-        description = "Ambient light monitoring Service";
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Restart = "on-failure";
-          ExecStart = "${pkgs.illuminanced}/bin/illuminanced --config ${settingsFile} --no-fork";
-        };
-      };
+    systemd.services =
+      let
+        settingsFile = settingsFormat.generate "illuminanced.toml" {
+          daemonize.log_level = cfg.settings.log_level;
 
-    };
+          general = {
+            check_period_in_seconds = cfg.settings.update_interval;
+            light_steps = 10;
+            step_barrier = 0.1;
+            min_backlight = 20;
+            enable_max_brightness_mode = true;
+
+            backlight_file = cfg.settings.backlight_file;
+            max_backlight_file = cfg.settings.max_backlight_file;
+            illuminance_file = cfg.settings.illuminance_file;
+          };
+
+          kalman = cfg.settings.kalman;
+
+          light =
+            with lib;
+            let
+              indexed_light_levels = lists.imap0 (
+                idx: attrsets.mapAttrsToList (name: attrsets.nameValuePair (name + "_" + builtins.toString idx))
+              ) cfg.settings.light;
+            in
+            {
+              points_count = builtins.length cfg.settings.light;
+            }
+            // builtins.listToAttrs (lists.concatLists indexed_light_levels);
+        };
+      in
+      lib.mkIf config.services.illuminanced.enable {
+        illuminanced = {
+          description = "Ambient light monitoring Service";
+          wantedBy = [ "multi-user.target" ];
+          serviceConfig = {
+            Restart = "on-failure";
+            ExecStart = "${pkgs.illuminanced}/bin/illuminanced --config ${settingsFile} --no-fork";
+          };
+        };
+
+      };
   };
 }
