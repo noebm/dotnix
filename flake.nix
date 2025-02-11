@@ -40,7 +40,6 @@
     let
       system = "x86_64-linux";
       user = "noebm";
-
       homeConfig = [
         home-manager.nixosModules.home-manager
         ({
