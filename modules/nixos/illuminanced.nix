@@ -82,6 +82,37 @@ in
         #   '';
         # };
 
+        sensor_toggle =
+          let
+            sensor_toggle = lib.types.submodule {
+              options = {
+                name = lib.mkOption {
+                  description = "Name of device to listen for events.";
+                  type = lib.types.str;
+                };
+                mask = lib.mkOption {
+                  description = "Path to device events.";
+                  type = lib.types.str;
+                  default = "/dev/input/event*";
+                };
+                max_brightness_mode = lib.mkOption {
+                  description = "Add maximum brightness mode.";
+                  type = lib.types.bool;
+                  default = true;
+                };
+              };
+            };
+          in
+          lib.mkOption {
+            description = ''
+              This option controls the ambient light sensor toggle.
+
+              The configured device must be able to trigger `KEY_ALS_TOGGLE` events to cycle though sensor modes.
+              The sensor modes are: AUTO, OFF and if enabled MAXIMUM.
+            '';
+            type = lib.types.nullOr sensor_toggle;
+          };
+
         light = lib.mkOption {
           type =
             let
@@ -143,17 +174,30 @@ in
         settingsFile = settingsFormat.generate "illuminanced.toml" {
           daemonize.log_level = cfg.settings.log_level;
 
-          general = {
-            check_period_in_seconds = cfg.settings.update_interval;
-            light_steps = 10;
-            step_barrier = 0.1;
-            min_backlight = 20;
-            enable_max_brightness_mode = true;
+          general =
+            let
+              sensor_toggle =
+                if cfg.settings ? sensor_toggle && cfg.settings.sensor_toggle ? name then
+                  {
+                    event_device_mask = cfg.settings.sensor_toggle.mask;
+                    event_device_name = cfg.settings.sensor_toggle.name;
+                    enable_max_brightness_mode = cfg.settings.sensor_toggle.max_brightness_mode;
+                  }
+                else
+                  { };
+            in
+            {
+              check_period_in_seconds = cfg.settings.update_interval;
+              light_steps = 10;
+              step_barrier = 0.1;
+              min_backlight = 20;
+              enable_max_brightness_mode = true;
 
-            backlight_file = cfg.settings.backlight_file;
-            max_backlight_file = cfg.settings.max_backlight_file;
-            illuminance_file = cfg.settings.illuminance_file;
-          };
+              backlight_file = cfg.settings.backlight_file;
+              max_backlight_file = cfg.settings.max_backlight_file;
+              illuminance_file = cfg.settings.illuminance_file;
+            }
+            // sensor_toggle;
 
           kalman = cfg.settings.kalman;
 
