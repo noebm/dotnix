@@ -47,7 +47,8 @@
         if (config.ollama.gpu == "Radeon780M") then
           {
             acceleration = "rocm";
-            # rocmOverrideGfx = "11.0.0";
+            # see https://github.com/ollama/ollama/issues/3189
+            rocmOverrideGfx = "11.0.2";
           }
         else
           throw "Unknown gpu!"
