@@ -37,9 +37,9 @@
       loadModels = config.ollama.models;
     };
 
+    systemd.services.open-webui.wantedBy = lib.mkIf config.ollama.webui.manual_start (pkgs.lib.mkForce [ ]);
     services.open-webui = {
       enable = config.ollama.webui.enable;
-      wantedBy = lib.mkIf config.ollama.webui.manual_start (pkgs.lib.mkForce [ ]);
       environment.OLLAMA_API_BASE_URL = "http://localhost:11434";
     };
 
