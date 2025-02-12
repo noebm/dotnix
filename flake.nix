@@ -63,7 +63,7 @@
 
       mkHosts = builtins.mapAttrs (hostname: config: config hostname);
 
-      pkgsUnstable = nixpkgs.legacyPackages.${system};
+      pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages.${system};
 
     in
     {
