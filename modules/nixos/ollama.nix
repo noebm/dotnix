@@ -17,6 +17,12 @@
           That means you need to manually start the service via systemd.
         '';
       };
+
+      gpu = lib.mkOption {
+        type = with lib.types; nullOr (enum [ "Radeon780M" ]);
+        default = null;
+      };
+
       models = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [
@@ -32,10 +38,20 @@
   };
 
   config = {
-    services.ollama = lib.mkIf config.ollama.enable {
-      enable = config.ollama.enable;
-      loadModels = config.ollama.models;
-    };
+    services.ollama =
+      lib.mkIf config.ollama.enable {
+        enable = config.ollama.enable;
+        loadModels = config.ollama.models;
+      }
+      // lib.optionalAttrs (config.ollama.gpu != null) (
+        if (config.ollama.gpu == "Radeon780M") then
+          {
+            acceleration = "rocm";
+            rocmOverrideGfx = "11.0.0";
+          }
+        else
+          throw "Unknown gpu!"
+      );
 
     systemd.services.open-webui.wantedBy = lib.mkIf config.ollama.webui.manual_start (
       pkgs.lib.mkForce [ ]
