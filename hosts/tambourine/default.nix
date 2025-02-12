@@ -35,6 +35,7 @@
   };
   programs.firefox.enable = true;
 
+  hardware.amdgpu.opencl.enable = true;
   ollama = {
     enable = true;
     webui = {
