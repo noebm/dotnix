@@ -41,6 +41,7 @@
       enable = true;
       manual_start = true;
     };
+    gpu = "Radeon780M";
   };
 
   hardware.bluetooth.enable = true;
