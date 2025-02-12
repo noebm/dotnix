@@ -10,6 +10,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.command-not-found.enable = true;
+
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
