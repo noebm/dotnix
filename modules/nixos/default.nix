@@ -26,4 +26,11 @@
     wl-clipboard
     lm_sensors
   ];
+
+  # use european measurements for time, units etc.
+  i18n.extraLocaleSettings = {
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+  };
 }
