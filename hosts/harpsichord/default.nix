@@ -25,7 +25,6 @@
     ../../modules/nixos/printer.nix
     ../../modules/nixos/logitech.nix
     ../../modules/nixos/gaming.nix
-    ../../modules/nixos/ollama.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -48,6 +47,11 @@
 
   # enable for sops host key generation
   services.openssh.enable = true;
+
+  ollama = {
+    enable = true;
+    webui.enable = true;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

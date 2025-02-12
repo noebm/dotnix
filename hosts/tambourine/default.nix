@@ -35,6 +35,14 @@
   };
   programs.firefox.enable = true;
 
+  ollama = {
+    enable = true;
+    webui = {
+      enable = true;
+      manual_start = true;
+    };
+  };
+
   hardware.bluetooth.enable = true;
 
   fonts.packages = with pkgs; [
