@@ -62,6 +62,9 @@
       };
 
       mkHosts = builtins.mapAttrs (hostname: config: config hostname);
+
+      pkgsUnstable = nixpkgs.legacyPackages.${system};
+
     in
     {
       homeConfigurations."${user}@harpsichord" = home-manager.lib.homeManagerConfiguration {
@@ -103,6 +106,7 @@
                 inputs
                 system
                 hostname
+                pkgsUnstable
                 ;
             };
             modules = homeConfig ++ [
