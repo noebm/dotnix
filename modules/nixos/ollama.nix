@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }:
 {
@@ -37,11 +38,12 @@
 
   };
 
-  config = {
+  config = lib.mkIf config.ollama.enable {
     services.ollama =
-      lib.mkIf config.ollama.enable {
+      {
         enable = config.ollama.enable;
         loadModels = config.ollama.models;
+        package = pkgsUnstable.ollama;
       }
       // lib.optionalAttrs (config.ollama.gpu != null) (
         if (config.ollama.gpu == "Radeon780M") then
