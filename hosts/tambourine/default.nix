@@ -17,6 +17,7 @@
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ../../modules/nixos
   ];
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # framework 13 - amd 7040 configuration
   services.fwupd.enable = true;
