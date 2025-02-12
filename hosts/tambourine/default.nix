@@ -35,6 +35,7 @@
   };
   programs.firefox.enable = true;
 
+  nixpkgs.config.rocmTargets = [ "1102" ];
   hardware.amdgpu.opencl.enable = true;
   ollama = {
     enable = true;
