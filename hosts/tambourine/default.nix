@@ -35,8 +35,6 @@
   };
   programs.firefox.enable = true;
 
-  nixpkgs.config.rocmTargets = [ "1102" ];
-  hardware.amdgpu.opencl.enable = true;
   ollama = {
     enable = true;
     webui = {
@@ -45,6 +43,44 @@
     };
     gpu = "Radeon780M";
   };
+  environment.systemPackages = with pkgs; [
+    ollama
+
+    amdvlk
+
+    rocmPackages.clr.icd # following for GPU AI acceleration
+    rocmPackages.rocm-smi
+    rocmPackages.clr
+    rocmPackages.hipblas
+    rocmPackages.rocblas
+    rocmPackages.rocsolver
+    rocmPackages.rocm-comgr
+    rocmPackages.rocm-runtime
+    rocmPackages.rocsparse
+
+    libva # some hardware acceleration for stuff like OBS
+    vaapiVdpau
+    libvdpau-va-gl
+  ];
+
+  # OpenCL + VAAPI + amdvlk + rocm AI
+  hardware.graphics.extraPackages = with pkgs; [
+    amdvlk
+
+    rocmPackages.clr.icd # following for GPU AI acceleration
+    rocmPackages.rocm-smi
+    rocmPackages.clr
+    rocmPackages.hipblas
+    rocmPackages.rocblas
+    rocmPackages.rocsolver
+    rocmPackages.rocm-comgr
+    rocmPackages.rocm-runtime
+    rocmPackages.rocsparse
+
+    libva # some hardware acceleration for stuff like OBS
+    vaapiVdpau
+    libvdpau-va-gl
+  ];
 
   hardware.bluetooth.enable = true;
 
