@@ -34,6 +34,13 @@
   };
   programs.firefox.enable = true;
 
+  services.ollama = {
+    enable = true;
+    loadModels = [ "qwen2.5-coder:3b" ];
+    acceleration = "rocm";
+    rocmOverrideGfx = "11.0.2";
+  };
+
   hardware.bluetooth.enable = true;
 
   fonts.packages = with pkgs; [
