@@ -6,6 +6,7 @@
     ./development.nix
     ./nix-utils.nix
     ./bash.nix
+    ./ollama.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
