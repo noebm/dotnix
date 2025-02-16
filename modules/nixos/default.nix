@@ -7,6 +7,7 @@
     ./nix-utils.nix
     ./bash.nix
     ./ollama.nix
+    ./upgrade.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
