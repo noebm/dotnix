@@ -113,11 +113,11 @@
         "wix-extract": "wix-extract"
       },
       "locked": {
-        "lastModified": 1733940980,
-        "narHash": "sha256-CGzGfILtlkOYxrf6+37AjCZhbW3xsQCKmSJb9etZyz0=",
+        "lastModified": 1739729863,
+        "narHash": "sha256-pXO1EoltrkAyMXeYh2YXVCU+JOgnzVFK5CxxOxnUfio=",
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "rev": "310f557ab1d678bd82ab531dc65a12709d26ff94",
+        "rev": "41a281358d0cb8581e1fc2a773b8ae63730863c1",
         "type": "github"
       },
       "original": {
