@@ -94,6 +94,27 @@
             definedAliases = [ "@perp" ];
 
           };
+
+          "Discogs" = {
+            urls = [
+              {
+                template = "https://www.discogs.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+
+            icon = "${pkgs.fetchurl {
+              url = "https://www.discogs.com/favicon.ico";
+              hash = "sha256-35pkeFkmYAd+TndNN7rm2x6019nSysMfDc2riAT3bAY=";
+            }}";
+            definedAliases = [ "@disc" ];
+
+          };
         };
 
       };
