@@ -18,10 +18,10 @@
       search = {
         force = true;
 
-        default = "DuckDuckGo";
+        default = "Google";
         order = [
-          "DuckDuckGo"
           "Google"
+          "DuckDuckGo"
         ];
 
         engines = {
