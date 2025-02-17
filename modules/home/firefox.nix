@@ -40,7 +40,6 @@
                 ];
               }
             ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nix" ];
           };
           "NixOS Modules" = {
@@ -55,7 +54,6 @@
                 ];
               }
             ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nixos" ];
           };
           "NixOS Wiki" = {
@@ -70,7 +68,6 @@
                 ];
               }
             ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nixwiki" ];
           };
 
@@ -86,13 +83,7 @@
                 ];
               }
             ];
-
-            icon = "${pkgs.fetchurl {
-              url = "https://www.perplexity.ai/favicon.ico";
-              hash = "sha256-35pkeFkmYAd+TndNN7rm2x6019nSysMfDc2riAT3bAY=";
-            }}";
             definedAliases = [ "@perp" ];
-
           };
 
           "Discogs" = {
@@ -107,13 +98,7 @@
                 ];
               }
             ];
-
-            icon = "${pkgs.fetchurl {
-              url = "https://www.discogs.com/favicon.ico";
-              hash = "sha256-35pkeFkmYAd+TndNN7rm2x6019nSysMfDc2riAT3bAY=";
-            }}";
             definedAliases = [ "@disc" ];
-
           };
         };
 
