@@ -17,7 +17,6 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     # check for x86_64-linux?
     inputs.kinect-firmware-utils.nixosModules.${system}.default
-    inputs.zwift.nixosModules.default
     ../../modules/nixos
     ../../modules/nixos/wm
     ../../modules/nixos/kde-connect.nix
@@ -25,6 +24,7 @@
     ../../modules/nixos/printer.nix
     ../../modules/nixos/logitech.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/zwift.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

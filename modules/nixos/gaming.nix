@@ -3,11 +3,12 @@
   inputs,
   system,
   ...
-}: {
+}:
+{
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
+      extraPkgs =
+        pkgs: with pkgs; [
           xorg.libXcursor
           xorg.libXi
           xorg.libXinerama
@@ -33,6 +34,4 @@
   environment.systemPackages = [
     pkgs.prismlauncher
   ];
-
-  programs.zwift.enable = true;
 }
