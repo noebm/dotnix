@@ -60,13 +60,10 @@ in
       algorithm = "histogram";
       mnemonicPrefix = true;
       renames = true;
-      json.textconv = "jq --sort-keys .";
     };
   };
 
-  programs.git.attributes = [
-    "*.json diff=json"
-  ];
+  imports = [ ./git/diff-json.nix ];
 
   programs.git.delta.enable = true;
   programs.git.delta.options.features = "colibri";
