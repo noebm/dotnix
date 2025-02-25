@@ -2,14 +2,16 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   delta = pkgs.fetchFromGitHub {
     owner = "dandavison";
     repo = "delta";
     rev = "f49fd3b012067e34c101d7dfc6cc3bbac1fe5ccc";
     hash = "sha256-33dx/JgLiOY7idNFASoxzTTLFHZcHT7lai4B6vZCwK0=";
   };
-in {
+in
+{
   programs.git.enable = true;
   programs.git.ignores = [
     # agda
@@ -41,9 +43,25 @@ in {
     };
 
     # “reuse recorded resolution” in merge conflicts
-    rerere.enabled = true;
+    rerere = {
+      enabled = true;
+      autoupdate = true;
+    };
 
-    diff.json.textconv = "jq --sort-keys .";
+    fetch = {
+      prune = true;
+      pruneTags = true;
+      all = true;
+    };
+
+    pull.rebase = true;
+
+    diff = {
+      algorithm = "histogram";
+      mnemonicPrefix = true;
+      renames = true;
+      json.textconv = "jq --sort-keys .";
+    };
   };
 
   programs.git.attributes = [
@@ -53,10 +71,10 @@ in {
   programs.git.delta.enable = true;
   programs.git.delta.options.features = "colibri";
   programs.git.includes = [
-    {path = "${delta}/themes.gitconfig";}
-    {path = config.sops.templates."git_secrets".path;}
+    { path = "${delta}/themes.gitconfig"; }
+    { path = config.sops.templates."git_secrets".path; }
   ];
 
   # git commit --fixup, but automatic
-  home.packages = [pkgs.git-absorb];
+  home.packages = [ pkgs.git-absorb ];
 }
