@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
+pushd "$NIXOS_CONFIG" || exit
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Cannot upgrade with uncommited changes present!"
+  exit 1
+fi
+
+nix flake update
+
+git commit -am 'chore(deps): upgrade dependencies'
+
+CURRENT=$(readlink /run/current-system)
+./rebuild
+UPGRADE=$(readlink /run/current-system)
+
+# FIXME: use the proper name (nvd) and check for dependency
+echo "The upgrade caused the following changes:"
+nix-diff "$CURRENT" "$UPGRADE"
+
+popd || exit
+
+
