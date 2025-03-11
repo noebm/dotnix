@@ -90,7 +90,6 @@
             };
             modules = homeConfig ++ [
               ./hosts/${hostname}
-              ./modules/nixos/dirty.nix
             ];
           };
 
@@ -107,7 +106,6 @@
             };
             modules = homeConfig ++ [
               ./hosts/${hostname}
-              ./modules/nixos/dirty.nix
             ];
           };
       };
