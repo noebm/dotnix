@@ -10,7 +10,24 @@ if [[ $BRANCH == *"/"* ]]; then
   exit 1
 fi
 
+CURRENT=$(readlink /run/current-system)
 sudo nixos-rebuild switch --profile-name "${BRANCH}" --flake .
+UPGRADE=$(readlink /run/current-system)
+
+DIFF=$(nix-diff "$CURRENT" "$UPGRADE")
+
+# FIXME: use the proper name (nvd) and check for dependency
+echo "The upgrade caused the following changes:"
+echo "$DIFF"
+
+echo "Committing changes.."
+
+msg="chore: rebuild triggered"
+git commit -am "${msg}
+
+${DIFF}
+"
+
 
 popd || exit
 

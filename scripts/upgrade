@@ -10,15 +10,7 @@ fi
 
 nix flake update
 
-git commit -am 'chore(deps): upgrade dependencies'
-
-CURRENT=$(readlink /run/current-system)
 ./rebuild
-UPGRADE=$(readlink /run/current-system)
-
-# FIXME: use the proper name (nvd) and check for dependency
-echo "The upgrade caused the following changes:"
-nix-diff "$CURRENT" "$UPGRADE"
 
 popd || exit
 
