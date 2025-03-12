@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
   imports = [
     ./firefox.nix
@@ -9,6 +9,10 @@
     ./ollama.nix
     ./upgrade.nix
   ];
+
+  system.nixos.label = "nixos-${
+    toString (self.shortRev or self.dirtyShortRev or self.lastModified or "unknown")
+  }";
 
   nixpkgs.config.allowUnfree = true;
 
