@@ -14,7 +14,7 @@ CURRENT=$(readlink /run/current-system)
 sudo nixos-rebuild switch --profile-name "${BRANCH}" --flake .
 UPGRADE=$(readlink /run/current-system)
 
-DIFF=$(nix-diff "$CURRENT" "$UPGRADE")
+DIFF=$(nvd diff "$CURRENT" "$UPGRADE")
 
 # FIXME: use the proper name (nvd) and check for dependency
 echo "The upgrade caused the following changes:"
