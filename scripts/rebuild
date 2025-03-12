@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
 pushd "$NIXOS_CONFIG" || exit
 
