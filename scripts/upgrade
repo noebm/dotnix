@@ -3,6 +3,8 @@
 NIXOS_CONFIG=$(dirname -- "${BASH_SOURCE[0]}")
 pushd "$NIXOS_CONFIG" || exit
 
+git pull
+
 if [ -n "$(git status --porcelain)" ]; then
   echo "Cannot upgrade with uncommited changes present!"
   exit 1
@@ -11,6 +13,8 @@ fi
 nix flake update
 
 ./rebuild
+
+git push
 
 popd || exit
 
