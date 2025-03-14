@@ -12,8 +12,13 @@ if [[ $BRANCH == *"/"* ]]; then
   exit 1
 fi
 
+FLAGS=()
+if [ "$BRANCH" != "main" ]; then
+  FLAGS+=(--profile-name "$BRANCH")
+fi
+
 CURRENT=$(readlink /run/current-system)
-sudo nixos-rebuild switch --profile-name "${BRANCH}" --flake .
+sudo nixos-rebuild switch "${FLAGS[@]}" --flake .
 UPGRADE=$(readlink /run/current-system)
 
 DIFF=$(nvd diff "$CURRENT" "$UPGRADE")
