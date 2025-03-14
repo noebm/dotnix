@@ -1,3 +1,5 @@
+[![Update flake.lock](https://github.com/noebm/dotnix/actions/workflows/flake-lock.yml/badge.svg)](https://github.com/noebm/dotnix/actions/workflows/flake-lock.yml)
+
 # Quick references
 
 ## System profiles and boot menu entries
