@@ -23,5 +23,8 @@ jobs:
           git config --global user.email "github-actions@github.com"
           
           nix flake update --commit-lock-file
-          
-          git push
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
