@@ -14,6 +14,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     # check for x86_64-linux?
     inputs.kinect-firmware-utils.nixosModules.${system}.default
@@ -111,13 +114,6 @@
     glow
     wget
   ];
-
-  # opengl stuff for lutris / battlenet
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
