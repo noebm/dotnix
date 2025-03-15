@@ -7,35 +7,45 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/61917c88-d5e0-49d9-9529-5972d78d7733";
     fsType = "ext4";
-    options = ["noatime"];
+    options = [ "noatime" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/8106-7773";
     fsType = "vfat";
-    options = ["noatime"];
+    options = [ "noatime" ];
   };
 
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/ed32536e-87d6-4403-97bc-64128bdd1370";
     fsType = "ext4";
-    options = ["users" "noatime"];
+    options = [
+      "users"
+      "noatime"
+    ];
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
