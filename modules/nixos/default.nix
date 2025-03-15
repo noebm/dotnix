@@ -1,4 +1,9 @@
-{ self, pkgs, ... }:
+{
+  self,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     ./firefox.nix
@@ -20,7 +25,11 @@
 
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages =
+    if pkgs.lib.versionAtLeast config.system.nixos.version "25.05" then
+      with pkgs; [ nerd-fonts.droid-sans-mono ]
+    else
+      with pkgs; [ nerdfonts ];
 
   nix.settings.experimental-features = [
     "nix-command"

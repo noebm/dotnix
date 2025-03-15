@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     zwift = {
       url = "github:netbrain/zwift";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -34,14 +39,18 @@
     {
       self,
       nixpkgs,
-      home-manager,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       user = "noebm";
-      homeConfig = [
-        home-manager.nixosModules.home-manager
+      homeConfig = unstable: [
+        (
+          if unstable then
+            inputs.home-manager-unstable.nixosModules.home-manager
+          else
+            inputs.home-manager.nixosModules.home-manager
+        )
         ({
           home-manager.useUserPackages = true;
           home-manager.useGlobalPkgs = true;
@@ -79,7 +88,7 @@
       nixosConfigurations = mkHosts {
         harpsichord =
           hostname:
-          nixpkgs.lib.nixosSystem {
+          inputs.nixpkgs-unstable.lib.nixosSystem {
             specialArgs = {
               inherit
                 self
@@ -88,7 +97,7 @@
                 hostname
                 ;
             };
-            modules = homeConfig ++ [
+            modules = homeConfig true ++ [
               ./hosts/${hostname}
             ];
           };
@@ -104,7 +113,7 @@
                 hostname
                 ;
             };
-            modules = homeConfig ++ [
+            modules = homeConfig false ++ [
               ./hosts/${hostname}
             ];
           };
