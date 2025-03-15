@@ -59,7 +59,10 @@
 
           users.users.${user} = {
             isNormalUser = true;
-            extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+            extraGroups = [
+              "wheel" # Enable ‘sudo’ for the user.
+              "corectrl" # Enable usage of `programs.corectrl`
+            ];
           };
           home-manager.users.${user} = import ./home.nix;
         })
