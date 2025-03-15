@@ -34,8 +34,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
-
   # use tmpfs for /tmp
   # this is disabled by default because it can cause (large) builds to fail
   boot.tmp.useTmpfs = true;
