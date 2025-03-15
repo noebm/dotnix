@@ -55,26 +55,26 @@
           home-manager.users.${user} = import ./home.nix;
         })
       ];
-      homeSetup = user: {
-        home.username = user;
-        home.homeDirectory = "/home/${user}";
-        nixpkgs.config.allowUnfree = true;
-      };
+      # homeSetup = user: {
+      #   home.username = user;
+      #   home.homeDirectory = "/home/${user}";
+      #   nixpkgs.config.allowUnfree = true;
+      # };
 
       mkHosts = builtins.mapAttrs (hostname: config: config hostname);
     in
     {
-      homeConfigurations."${user}@harpsichord" = home-manager.lib.homeManagerConfiguration {
-        modules = [
-          ./home.nix
-          (homeSetup user)
-        ];
-        extraSpecialArgs = { inherit inputs system; };
+      # homeConfigurations."${user}@harpsichord" = home-manager.lib.homeManagerConfiguration {
+      #   modules = [
+      #     ./home.nix
+      #     (homeSetup user)
+      #   ];
+      #   extraSpecialArgs = { inherit inputs system; };
 
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      };
+      #   pkgs = import nixpkgs {
+      #     inherit system;
+      #   };
+      # };
 
       nixosConfigurations = mkHosts {
         harpsichord =

@@ -17,8 +17,6 @@
   home.packages = with pkgs; [
     inputs.dotnvim.packages.${system}.nvim
 
-    home-manager
-
     tree
     discord
 
