@@ -3,7 +3,8 @@
   inputs,
   system,
   ...
-}: {
+}:
+{
 
   imports = [
     inputs.sops-nix.homeManagerModules.sops
@@ -20,9 +21,7 @@
 
     tree
     discord
-    lutris
-    wineWowPackages.stable
-    # wineWowPackages.waylandFull
+
     yt-dlp
     mpv
 
@@ -31,10 +30,6 @@
 
     # language support for nvim
     python3
-    cargo
-    rustc
-    luarocks # for nvim itself
-    nodejs
 
     # command line calculator
     kalker
