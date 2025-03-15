@@ -20,6 +20,7 @@
 
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
+  fonts.packages = with pkgs; [ nerdfonts ];
 
   nix.settings.experimental-features = [
     "nix-command"

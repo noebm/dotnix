@@ -43,10 +43,6 @@
 
   hardware.bluetooth.enable = true;
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
-
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
