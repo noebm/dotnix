@@ -50,8 +50,13 @@
   # enable for sops host key generation
   services.openssh.enable = true;
 
-  services.ollama.enable = true;
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
   services.open-webui.enable = true;
+
+  environment.systemPackages = with pkgs; [ rocmPackages.rocminfo ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
