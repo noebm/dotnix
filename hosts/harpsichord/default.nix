@@ -67,7 +67,10 @@
     support32Bit.enable = true;
   };
 
-  programs.corectrl.enable = true;
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.enable = true;
+  };
 
   # console = {
   #   font = "Lat2-Terminus16";
