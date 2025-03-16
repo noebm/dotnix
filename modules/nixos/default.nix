@@ -45,10 +45,18 @@
     lm_sensors
   ];
 
-  # use european measurements for time, units etc.
-  i18n.extraLocaleSettings = {
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "de_DE.UTF-8/UTF-8"
+    ];
+    # use european measurements for time, units etc.
+    extraLocaleSettings = {
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+    };
   };
 }
