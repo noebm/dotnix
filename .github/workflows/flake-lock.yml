@@ -25,6 +25,9 @@ jobs:
           
           nix flake update --commit-lock-file
 
+      - name: Check flake
+        run: nix flake check
+
       - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
