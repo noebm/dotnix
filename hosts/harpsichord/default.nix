@@ -29,7 +29,7 @@
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/zwift.nix
   ];
-  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
