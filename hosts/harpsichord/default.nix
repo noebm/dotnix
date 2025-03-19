@@ -22,6 +22,7 @@
     inputs.kinect-firmware-utils.nixosModules.${system}.default
     ../../modules/nixos
     ../../modules/nixos/wm
+    ../../modules/nixos/overclocking.nix
     ../../modules/nixos/kde-connect.nix
     ../../modules/nixos/ps5-controller.nix
     ../../modules/nixos/printer.nix
@@ -65,11 +66,6 @@
   hardware.amdgpu.amdvlk = {
     enable = true;
     support32Bit.enable = true;
-  };
-
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock.enable = true;
   };
 
   # console = {
