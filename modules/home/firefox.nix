@@ -18,15 +18,15 @@
       search = {
         force = true;
 
-        default = "Google";
+        default = "google";
         order = [
-          "Google"
-          "DuckDuckGo"
+          "google"
+          "ddg"
         ];
 
         engines = {
-          "Bing".metadata.hidden = true;
-          "Ecosia".metadata.hidden = true;
+          "bing".metadata.hidden = true;
+          "ecosia".metadata.hidden = true;
 
           "Nix Packages" = {
             urls = [
