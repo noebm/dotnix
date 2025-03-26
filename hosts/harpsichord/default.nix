@@ -16,7 +16,7 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-    inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+    # inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower not working with kernel 6.14
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     # check for x86_64-linux?
     inputs.kinect-firmware-utils.nixosModules.${system}.default
