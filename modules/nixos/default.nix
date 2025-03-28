@@ -55,7 +55,7 @@
     # use european measurements for time, units etc.
     extraLocaleSettings = {
       LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
+      LC_TIME = "en_US.UTF-8";
       LC_PAPER = "de_DE.UTF-8";
     };
   };
