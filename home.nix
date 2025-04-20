@@ -28,9 +28,6 @@
 
     # language support for nvim
     python3
-
-    # command line calculator
-    kalker
   ];
 
   xdg.enable = true;
