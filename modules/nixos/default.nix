@@ -37,6 +37,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    dmidecode
+    pciutils
     curl
     unzip
     zip
