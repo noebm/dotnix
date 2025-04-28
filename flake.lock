@@ -1,18 +1,12 @@
 {
   "nodes": {
     "crane": {
-      "inputs": {
-        "nixpkgs": [
-          "kinect-firmware-utils",
-          "nixpkgs"
-        ]
-      },
       "locked": {
-        "lastModified": 1712681629,
-        "narHash": "sha256-bMDXn4AkTXLCpoZbII6pDGoSeSe9gI87jxPsHRXgu/E=",
+        "lastModified": 1745454774,
+        "narHash": "sha256-oLvmxOnsEKGtwczxp/CwhrfmQUG2ym24OMWowcoRhH8=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "220387ac8e99cbee0ca4c95b621c4bc782b6a235",
+        "rev": "efd36682371678e2b6da3f108fdb5c613b3ec598",
         "type": "github"
       },
       "original": {
@@ -69,11 +63,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1710146030,
-        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -134,11 +128,11 @@
         "wix-extract": "wix-extract"
       },
       "locked": {
-        "lastModified": 1739729863,
-        "narHash": "sha256-pXO1EoltrkAyMXeYh2YXVCU+JOgnzVFK5CxxOxnUfio=",
+        "lastModified": 1745845807,
+        "narHash": "sha256-Obw2d7ixwtc9Hs03CVAHUqTJnZpdHEzMzzgfTh19VQM=",
         "owner": "noebm",
         "repo": "kinect-firmware-utils",
-        "rev": "41a281358d0cb8581e1fc2a773b8ae63730863c1",
+        "rev": "1e86c7cecc0d53c3ae2ca4a369a32083b1c92e8a",
         "type": "github"
       },
       "original": {
